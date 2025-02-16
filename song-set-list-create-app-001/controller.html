@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="format-detection" content="telephone=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <title>楽曲タイトル管理</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+
+  <body>
+    <div id="main">
+      <div id="container">
+        
+
+          <!-- 歌枠セットリストを操作する -->
+          <div class="controller">
+            <div class="item">
+              <h1>楽曲タイトル</h1>
+              <div class="item-input">
+                <input type="text" id="songTitleInput" placeholder="曲名を入力">
+                <button id="addSongTitleButton" onclick="addSongTitle()">追加する</button><br>
+              </div>
+            </div>
+            
+            <div class="item">
+              <h1>セットリストを書き出す</h1>
+              <p>
+                セットリストをテキストファイルで書き出すことが出来ます。
+                歌枠終了後にSNS等で共有する際にご利用ください。<br/>
+                保存先はダウンロードフォルダになります。
+              </p>
+              <div class="item_controller">
+                <button onclick="downloadTextFile()">ダウンロード</button>
+              </div>
+            </div>
+
+            <div class="item">
+              <h1>楽曲タイトル管理</h1>
+              <p>
+                設定した情報を削除します。<br/>
+                「タイトルを削除」は歌唱中の楽曲名を削除します。<br/>
+                「リストを削除」はセットリストを全て削除します。<br/>
+              </p>
+              <div class="item_controller">
+                <button onclick="clearSingingTitle()">タイトル削除</button>
+                <button onclick="clearSongTitles()">リスト削除</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- 歌枠セットリストのプレビュー -->
+          <div class="preview">
+            <h1>セットリスト</h1>
+
+            <div class="item">
+              <h2>歌った楽曲数</h2>
+              <p id="songTitleNum">0曲</p>
+            </div>
+
+            <div class="item">
+              <h2>歌唱中の楽曲</h2>
+              <p id="singingTitle">設定されていません</p>
+            </div>
+
+            <div class="item">
+              <h2>現在セットリスト</h2>
+              <ol id="songTitleList"></ol>
+            </div>
+          </div>
+        
+
+      </div>
+    </div>
+
+    <script src="./asset/js/script.js"></script>
+  </body>
+</html>
