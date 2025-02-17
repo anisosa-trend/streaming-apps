@@ -44,24 +44,21 @@ i{
   width: 640px;
 }
 
-.controller, .preview {
-  width: 320px;
-  padding: 16px 16px 20px;
-  border-radius: 8px;
-}
-
 .controller{
-  background-color: #f2f2f7;
+  width: 320px;
+  padding: 16px;
+  border-radius: 8px;
+  background-color: #ececf3;
   .item {
     &:not(:last-child) {
-      margin-bottom: 8px;
+      margin-bottom: 12px;
     }
   }
 
   .item_input{
     display: flex;
     align-items: flex-start;
-    gap: 8px;
+    gap: 12px;
     input[type="text"] {
       width: calc(100% - 20px);
       padding: 12px;
@@ -128,41 +125,5 @@ i{
     display: grid;
     grid-template-columns: 1fr max-content;
     grid-gap: 8px;
-  }
-}
-
-.preview{
-  background-color: #e6f7ff;
-  h1{
-    color: #7da0de;
-    font-size: 1.6rem;
-    margin-bottom: 8px;
-  }
-  h2{
-    color: #7da0de;
-    font-size: 1.4rem;
-    margin-bottom: 4px;
-  }
-  p{
-    font-size: 14px;
-    font-weight: bold;
-  }
-  ol{
-    height: calc(235px - 16px);
-    overflow-y: scroll;
-    padding: 8px;
-    margin: 0;
-    border: 2px solid #7da0de;
-    border-radius: 4px;
-  }
-  li{
-    font-size: 1.4rem;
-    line-height: 1.3em;
-    list-style: none;
-  }
-  .item {
-    &:not(:last-child) {
-      margin-bottom: 24px;
-    }
   }
 }
