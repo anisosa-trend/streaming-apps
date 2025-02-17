@@ -7,6 +7,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <title>楽曲タイトル管理</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kiwi+Maru&display=swap" rel="stylesheet">
   </head>
 
   <body>
@@ -17,60 +21,42 @@
           <!-- 歌枠セットリストを操作する -->
           <div class="controller">
             <div class="item">
-              <h1>楽曲タイトル</h1>
-              <div class="item-input">
-                <input type="text" id="songTitleInput" placeholder="曲名を入力">
-                <button id="addSongTitleButton" onclick="addSongTitle()">追加する</button><br>
+              <div class="item_input">
+                <input type="text" id="song-title-input" placeholder="曲名を入力">
+                <button onclick="addSongTitle()"><i class="fa-solid fa-plus"></i></button>
+              </div>
+            </div>
+
+            <div class="item">
+              <div class="item_list">
+                <div class="item_list_section">
+                  <h1>歌唱中の楽曲</h1>
+                  <div class="singing_title_layout">
+                    <p id="singing-title">設定されていません</p>
+                    <i class="fa-solid fa-xmark" onclick="clearSingingTitle()"></i>
+                  </div>
+                </div>
+
+                <div class="item_list_section">
+                  <h1>セットリスト</h1>
+                  <ol id="song-title-list"></ol>
+                </div>
               </div>
             </div>
             
             <div class="item">
-              <h1>セットリストを書き出す</h1>
-              <p>
-                セットリストをテキストファイルで書き出すことが出来ます。
-                歌枠終了後にSNS等で共有する際にご利用ください。<br/>
-                保存先はダウンロードフォルダになります。
-              </p>
               <div class="item_controller">
-                <button onclick="downloadTextFile()">ダウンロード</button>
+                <button onclick="" class="text_icon_button">
+                  <i class="fa-solid fa-arrow-up-from-bracket"></i>
+                  楽曲をインポート
+                </button>
+                <button onclick="clearSongTitles()"><i class="fa-regular fa-trash-can"></i></button>
               </div>
-            </div>
-
-            <div class="item">
-              <h1>楽曲タイトル管理</h1>
-              <p>
-                設定した情報を削除します。<br/>
-                「タイトルを削除」は歌唱中の楽曲名を削除します。<br/>
-                「リストを削除」はセットリストを全て削除します。<br/>
-              </p>
-              <div class="item_controller">
-                <button onclick="clearSingingTitle()">タイトル削除</button>
-                <button onclick="clearSongTitles()">リスト削除</button>
-              </div>
-            </div>
-          </div>
-
-          <!-- 歌枠セットリストのプレビュー -->
-          <div class="preview">
-            <h1>セットリスト</h1>
-
-            <div class="item">
-              <h2>歌った楽曲数</h2>
-              <p id="songTitleNum">0曲</p>
-            </div>
-
-            <div class="item">
-              <h2>歌唱中の楽曲</h2>
-              <p id="singingTitle">設定されていません</p>
-            </div>
-
-            <div class="item">
-              <h2>現在セットリスト</h2>
-              <ol id="songTitleList"></ol>
             </div>
           </div>
         
-
+          
+        </div>
       </div>
     </div>
 
