@@ -60,27 +60,3 @@ const closeConfirmPopup = () => {
   const confirmPopup = document.getElementById("confirm-popup");
   confirmPopup.style.display = "none";
 }
-
-const fetchDocumentText = () => {
-  fetch('asset/music_set_list.txt')
-    .then(response => {
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-      return response.text();
-    })
-    .then(text => {
-      const lines = text.split('\n');
-      const listElement = document.getElementById("song-title-list");
-      listElement.innerHTML = "";
-
-      for (let i = 0; i < lines.length; i++) {
-        const listItem = document.createElement("li");
-        listItem.textContent = `${i + 1}. ${lines[i]}`;
-        listElement.appendChild(listItem);
-      }
-    })
-    .catch(error => {
-      document.getElementById('singing-title').textContent = 'ファイル読み込みエラーが発生しました。';
-    });
-}

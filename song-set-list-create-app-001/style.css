@@ -39,12 +39,6 @@ i {
   cursor: pointer;
 }
 
-#container {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  width: 640px;
-}
-
 .controller {
   width: 320px;
   padding: 16px;
@@ -117,9 +111,9 @@ i {
   list-style: none;
 }
 .controller .item_controller {
-  display: grid;
-  grid-template-columns: 1fr max-content;
-  grid-gap: 8px;
+  display: flex;
+  justify-content: end;
+  gap: 8px;
 }
 .controller .item_controller_button_with_popup {
   position: relative;
