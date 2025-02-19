@@ -1,3 +1,4 @@
+@charset "UTF-8";
 html {
   font-family: "Kiwi Maru", serif;
   font-size: 10px;
@@ -119,4 +120,49 @@ i {
   display: grid;
   grid-template-columns: 1fr max-content;
   grid-gap: 8px;
+}
+.controller .item_controller_button_with_popup {
+  position: relative;
+}
+.controller #confirm-popup {
+  display: none;
+  position: absolute;
+  top: -52px;
+  right: 0;
+  width: 304px;
+  padding: 8px;
+  color: #ffffff;
+  font-size: 1.2rem;
+  background-color: #7da0de;
+  border-radius: 4px;
+}
+.controller #confirm-popup::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  right: 16px;
+  width: 10px;
+  height: 8.6602540378px;
+  -webkit-clip-path: polygon(0 0, 100% 0, 50% 100%);
+          clip-path: polygon(0 0, 100% 0, 50% 100%); /* 頂点の順序を調整 */
+  background-color: #7da0de;
+}
+.controller #confirm-popup .confirm_popup_contents {
+  display: grid;
+  grid-template-columns: 1fr 25px 25px;
+  gap: 8px;
+  align-items: center;
+}
+.controller #confirm-popup .confirm_popup_contents button {
+  display: flex;
+  width: 100%;
+  padding: 4px;
+  align-items: center;
+  justify-content: center;
+}
+.controller #confirm-popup .confirm_popup_contents button.allow {
+  background-color: #e6ffea;
+}
+.controller #confirm-popup .confirm_popup_contents button.cancel {
+  background-color: #ffe6e6;
 }/*# sourceMappingURL=style.css.map */

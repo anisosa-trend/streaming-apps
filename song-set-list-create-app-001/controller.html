@@ -19,6 +19,8 @@
         
 
           <!-- 歌枠セットリストを操作する -->
+          <!-- @todo -->
+          <!-- インポート機能の実装 -->
           <div class="controller">
             <div class="item">
               <div class="item_input">
@@ -32,7 +34,7 @@
                 <div class="item_list_section">
                   <h1>歌唱中の楽曲</h1>
                   <div class="singing_title_layout">
-                    <p id="singing-title">設定されていません</p>
+                    <p id="singing-title">---</p>
                     <i class="fa-solid fa-xmark" onclick="clearSingingTitle()"></i>
                   </div>
                 </div>
@@ -50,12 +52,23 @@
                   <i class="fa-solid fa-arrow-up-from-bracket"></i>
                   楽曲をインポート
                 </button>
-                <button onclick="clearSongTitles()"><i class="fa-regular fa-trash-can"></i></button>
+
+                <div class="item_controller_button_with_popup">
+                  <button onclick="openConfirmPopup()"><i class="fa-regular fa-trash-can"></i></button>
+
+                  <div id="confirm-popup">
+                    <div class="confirm_popup_contents">
+                      <p>本当にリストを削除しますか？</p>
+                      <button class="allow" onclick="clearSongTitles()"><i class="fa-solid fa-check"></i></button>
+                      <button class="cancel" onclick="closeConfirmPopup()"><i class="fa-solid fa-xmark"></i></button>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         
-          
+
         </div>
       </div>
     </div>

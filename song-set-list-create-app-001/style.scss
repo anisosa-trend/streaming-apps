@@ -1,3 +1,7 @@
+$main-color: #ececf3;
+$base-color: #e6f7ff;
+$accent-color: #7da0de;
+
 html {
   font-family: "Kiwi Maru", serif;
   font-size: 10px;
@@ -17,10 +21,10 @@ button {
   display: inline-block;
   padding: 12px 14px;
   margin: 0;
-  color: #7da0de;
+  color: $accent-color;
   font-size: 1.2rem;
   font-weight: bold;
-  background-color: #e6f7ff;
+  background-color: $base-color;
   border: none;
   border-radius: 4px;
   cursor: pointer;
@@ -48,7 +52,7 @@ i{
   width: 320px;
   padding: 16px;
   border-radius: 8px;
-  background-color: #ececf3;
+  background-color: $main-color;
   .item {
     &:not(:last-child) {
       margin-bottom: 12px;
@@ -70,7 +74,7 @@ i{
       background-color: #fbfbfd;
       &:focus {
         outline: none;
-        box-shadow: 0 0 0 2px #7da0de;
+        box-shadow: 0 0 0 2px $accent-color;
       }
     }
   }
@@ -125,5 +129,51 @@ i{
     display: grid;
     grid-template-columns: 1fr max-content;
     grid-gap: 8px;
+  }
+
+  .item_controller_button_with_popup{
+    position: relative;
+  }
+
+  #confirm-popup{
+    display: none;
+    position: absolute;
+    top: -52px;
+    right: 0;
+    width: calc(320px - 16px);
+    padding: 8px;
+    color: #ffffff;
+    font-size: 1.2rem;
+    background-color: $accent-color;
+    border-radius: 4px;
+    &::after{
+      content: "";
+      position: absolute;
+      top: 100%;
+      right: 16px;
+      width: 10px;
+      height: calc(10px / 2 * tan(60deg));
+      clip-path: polygon(0 0, 100% 0, 50% 100%); /* 頂点の順序を調整 */
+      background-color: $accent-color;
+    }
+    .confirm_popup_contents{
+      display: grid;
+      grid-template-columns: 1fr 25px 25px;
+      gap: 8px;
+      align-items: center;
+      button {
+        display: flex;
+        width: 100%;
+        padding: 4px;
+        align-items: center;
+        justify-content: center;
+        &.allow {
+          background-color: #e6ffea;
+        }
+        &.cancel {
+          background-color: #ffe6e6
+        }
+      }
+    }
   }
 }

@@ -37,15 +37,26 @@ const updateSongList = () => {
 
 const clearSingingTitle = () => {
   singingTitle.shift();
-  document.getElementById("singing-title").textContent = "";
+  document.getElementById("singing-title").textContent = "---";
 }
 
 const clearSongTitles = () => {
   songTitles.length = 0;
   document.getElementById("song-title-list").innerHTML = "";
+  closeConfirmPopup();
 }
 
 const scrollToBottom = () => {
   const element = document.getElementById("song-title-list");
   element.scrollTop = element.scrollHeight - element.clientHeight;
+}
+
+const openConfirmPopup = () => {
+  const confirmPopup = document.getElementById("confirm-popup");
+  confirmPopup.style.display = "block";
+}
+
+const closeConfirmPopup = () => {
+  const confirmPopup = document.getElementById("confirm-popup");
+  confirmPopup.style.display = "none";
 }
