@@ -18,10 +18,10 @@ button {
   display: inline-block;
   padding: 12px 14px;
   margin: 0;
-  color: #7da0de;
+  color: #c39e88;
   font-size: 1.2rem;
   font-weight: bold;
-  background-color: #e6f7ff;
+  background-color: #56453f;
   border: none;
   border-radius: 4px;
   cursor: pointer;
@@ -34,7 +34,7 @@ button.text_icon_button {
 }
 
 i {
-  color: #9ab4fc;
+  color: #c39e88;
   font-size: 1.6rem;
   cursor: pointer;
 }
@@ -43,7 +43,7 @@ i {
   width: 320px;
   padding: 16px;
   border-radius: 8px;
-  background-color: #ececf3;
+  background-color: #a47764;
 }
 .controller .item:not(:last-child) {
   margin-bottom: 12px;
@@ -61,15 +61,15 @@ i {
   font-weight: bold;
   border: none;
   border-radius: 4px;
-  background-color: #fbfbfd;
+  background-color: #f0f0e5;
 }
 .controller .item_input input[type=text]:focus {
   outline: none;
-  box-shadow: 0 0 0 2px #7da0de;
+  box-shadow: 0 0 0 2px #c39e88;
 }
 .controller .item_list {
   padding: 12px;
-  background-color: #fbfbfd;
+  background-color: #f0f0e5;
   border-radius: 4px;
 }
 .controller .item_list .item_list_section:not(:last-child) {
@@ -84,10 +84,10 @@ i {
 .controller .item_list h1 {
   padding-bottom: 4px;
   margin-bottom: 4px;
-  color: #9ab4fc;
+  color: #c39e88;
   font-size: 1.4rem;
   font-weight: bold;
-  border-bottom: 2px solid #9ab4fc;
+  border-bottom: 2px solid #c39e88;
 }
 .controller .item_list p {
   color: #555555;
@@ -127,7 +127,7 @@ i {
   padding: 8px;
   color: #ffffff;
   font-size: 1.2rem;
-  background-color: #7da0de;
+  background-color: #c39e88;
   border-radius: 4px;
 }
 .controller #confirm-popup::after {
@@ -139,7 +139,7 @@ i {
   height: 8.6602540378px;
   -webkit-clip-path: polygon(0 0, 100% 0, 50% 100%);
           clip-path: polygon(0 0, 100% 0, 50% 100%); /* 頂点の順序を調整 */
-  background-color: #7da0de;
+  background-color: #c39e88;
 }
 .controller #confirm-popup .confirm_popup_contents {
   display: grid;

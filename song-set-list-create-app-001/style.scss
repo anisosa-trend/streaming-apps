@@ -1,6 +1,7 @@
-$main-color: #ececf3;
-$base-color: #e6f7ff;
-$accent-color: #7da0de;
+$main-color: #a47764;
+$base-color: #56453f;
+$accent-color: #c39e88;
+$contents-color: #f0f0e5;
 
 html {
   font-family: "Kiwi Maru", serif;
@@ -37,7 +38,7 @@ button {
 }
 
 i{
-  color: #9ab4fc;
+  color: $accent-color;
   font-size: 1.6rem;
   cursor: pointer;
 }
@@ -65,7 +66,7 @@ i{
       font-weight: bold;
       border: none;
       border-radius: 4px;
-      background-color: #fbfbfd;
+      background-color: $contents-color;
       &:focus {
         outline: none;
         box-shadow: 0 0 0 2px $accent-color;
@@ -75,7 +76,7 @@ i{
 
   .item_list{
     padding: 12px;
-    background-color: #fbfbfd;
+    background-color: $contents-color;
     border-radius: 4px;
     .item_list_section{
       &:not(:last-child) {
@@ -91,10 +92,10 @@ i{
     h1{
       padding-bottom: 4px;
       margin-bottom: 4px;
-      color: #9ab4fc;
+      color: $accent-color;
       font-size: 1.4rem;
       font-weight: bold;
-      border-bottom: 2px solid #9ab4fc;
+      border-bottom: 2px solid $accent-color;
     }
     p{
       color: #555555;
