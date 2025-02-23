@@ -13,7 +13,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Kiwi+Maru&display=swap" rel="stylesheet">
   </head>
 
-  <!-- カスタムドックの配信の載せ方 -->
   <body>
     <div id="main">
       <div id="container">
@@ -44,19 +43,31 @@
           
           <div class="item">
             <div class="item_controller">
-              <!-- リストを操作するボタンを配置する -->
-
               <div class="item_controller_button_with_popup">
-                <button class="text_icon_button" onclick="openConfirmPopup()"><i class="fa-regular fa-trash-can"></i>リストを削除</button>
+                <button onclick="openConfirmPopup()"><i class="fa-regular fa-trash-can"></i></button>
 
-                <div id="confirm-popup">
-                  <div class="confirm_popup_contents">
-                    <p>本当にリストを削除しますか？</p>
+                <div id="confirm-popup" class="popup">
+                  <div class="popup_contents">
+                    <p>本当にセットリストを削除しますか？</p>
                     <button class="allow" onclick="clearSongTitles()"><i class="fa-solid fa-check"></i></button>
                     <button class="cancel" onclick="closeConfirmPopup()"><i class="fa-solid fa-xmark"></i></button>
                   </div>
                 </div>
               </div>
+
+              <!-- <div class="item_controller_button_with_popup">
+                <button class="setting_button" onclick="openSettingPopup()"><i class="fa-solid fa-gear"></i></button>
+
+                <div id="setting-popup" class="popup">
+                  <div class="popup_contents">
+                    <p>時計の表示設定</p>
+                    <div class="toggle_button">
+                      <input id="toggle-clock" class="toggle_input" type='checkbox' onchange="setIsDisplayClock(this.checked)"/>
+                      <label for="toggle-clock" class="toggle_label"></label>
+                    </div>
+                  </div>
+                </div>
+              </div> -->
             </div>
           </div>
         </div>
@@ -64,5 +75,9 @@
     </div>
 
     <script src="./asset/js/script.js"></script>
+    <script src="./asset/js/popup.js"></script>
+    <script src="./asset/js/setting.js"></script>
+    <script src="./asset/js/localStorage.js"></script>
+    <script src="./asset/js/utils/elementAccessor.js"></script>
   </body>
 </html>

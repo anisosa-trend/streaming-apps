@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="format-detection" content="telephone=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <title>楽曲タイトル管理</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kiwi+Maru&display=swap" rel="stylesheet">
+  </head>
+
+  <body>
+    <div id="main">
+      <div id="container">
+
+
+        <div class="view">
+          <!-- 時計を表示する -->
+          <div class="clock">
+            <div class="clock_layout">
+              <p id="clock-time">--:--</p>
+              <p id="clock-date">--/-- ---</p>
+            </div>
+          </div>
+
+          <!-- 歌唱中の楽曲を表示する -->
+          <div class="now_singing">
+            <h1>Now Singing</h1>
+            <p id="singing-title">---</p>
+          </div>
+
+          <!-- セットリストを表示する -->
+          <div class="set_list">
+            <h1>Set List</h1>
+            <ol id="song-title-list"></ol>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+
+    <script src="./asset/js/script.js"></script>
+    <script src="./asset/js/clock.js"></script>
+    <script src="./asset/js/localStorage.js"></script>
+  </body>
+</html>

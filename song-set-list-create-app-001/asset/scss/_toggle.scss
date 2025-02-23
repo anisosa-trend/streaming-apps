@@ -1,0 +1,45 @@
+@use "constants" as *;
+
+.toggle_button {
+  position: relative;
+  width: 40px;
+  height: 20px;
+}
+
+.toggle_input {
+  position: absolute;
+  z-index: 5;
+  opacity: 0;
+}
+
+.toggle_label {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 20px;
+  background: $contents-color;
+  border-radius: 40px;
+  box-sizing: border-box;
+  transition: 0.4s;
+  cursor: pointer;
+}
+
+.toggle_label:after {
+  content: "";
+  position: absolute;
+  left: 3px;
+  top: 50%;
+  width: 15px;
+  height: 15px;
+  background: $toggle-inactive-color;
+  border-radius: 100%;
+  z-index: 2;
+  transform: translateY(-50%);
+  transition: 0.4s;
+}
+
+.toggle_input:checked + .toggle_label:after {
+  left: 22px;
+  background: $toggle-active-color;
+}
+

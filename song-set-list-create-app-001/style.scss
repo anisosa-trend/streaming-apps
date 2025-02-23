@@ -1,7 +1,5 @@
-$main-color: #a47764;
-$base-color: #56453f;
-$accent-color: #c39e88;
-$contents-color: #f0f0e5;
+@use "asset/scss/constants" as *;
+@use "asset/scss/toggle" as *;
 
 html {
   font-family: "Kiwi Maru", serif;
@@ -25,7 +23,7 @@ button {
   color: $accent-color;
   font-size: 1.2rem;
   font-weight: bold;
-  background-color: $base-color;
+  background-color: $accent-color;
   border: none;
   border-radius: 4px;
   cursor: pointer;
@@ -38,7 +36,7 @@ button {
 }
 
 i{
-  color: $accent-color;
+  color: $base-color;
   font-size: 1.6rem;
   cursor: pointer;
 }
@@ -92,13 +90,13 @@ i{
     h1{
       padding-bottom: 4px;
       margin-bottom: 4px;
-      color: $accent-color;
+      color: $base-color;
       font-size: 1.4rem;
       font-weight: bold;
-      border-bottom: 2px solid $accent-color;
+      border-bottom: 2px solid $base-color;
     }
     p{
-      color: #555555;
+      color: $font-color;
       font-size: 1.4rem;
       font-weight: bold;
     }
@@ -112,7 +110,7 @@ i{
       -ms-overflow-style: none;
     }
     li{
-      color: #555555;
+      color: $font-color;
       font-size: 1.4rem;
       font-weight: bold;
       line-height: 1.5em;
@@ -130,11 +128,15 @@ i{
     position: relative;
   }
 
-  #confirm-popup{
+  // .setting_button{
+  //   padding: 12px;
+  // }
+
+  .popup{
     display: none;
     position: absolute;
     top: -52px;
-    right: 0;
+    right: 0px;
     width: calc(320px - 16px);
     padding: 8px;
     color: #ffffff;
@@ -151,7 +153,7 @@ i{
       clip-path: polygon(0 0, 100% 0, 50% 100%); /* 頂点の順序を調整 */
       background-color: $accent-color;
     }
-    .confirm_popup_contents{
+    .popup_contents{
       display: grid;
       grid-template-columns: 1fr 25px 25px;
       gap: 8px;
@@ -169,6 +171,74 @@ i{
           background-color: #ffe6e6
         }
       }
+    }
+  }
+  // #setting-popup.popup{
+  //   right: 0px;
+  //   &::after{
+  //     right: 16px;
+  //   }
+  //   .popup_contents{
+  //     grid-template-columns: 1fr max-content;
+  //   }
+  // }
+}
+
+.view{
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 320px;
+  .clock_layout{
+    display: inline-block;
+    text-align: center;
+    #clock-time{
+      margin-bottom: 4px;
+      color: $accent-color;
+      font-size: 3.2rem;
+      border-bottom: 1px solid $accent-color;
+    }
+    #clock-date{
+      color: $accent-color;
+      font-size: 1.4rem;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+  }
+
+  h1{
+    padding-bottom: 4px;
+    margin-bottom: 4px;
+    color: $accent-color;
+    font-size: 1.4rem;
+    font-weight: bold;
+    border-bottom: 1px solid $accent-color;
+  }
+
+  .now_singing{
+    p{
+      color: $font-color;
+      font-size: 1.6rem;
+      font-weight: bold;
+    }
+  }
+  
+  .set_list{
+    ol{
+      height: 400px;
+      padding: 0;
+      margin: 0;
+      border-bottom: 1px solid #000;
+      overflow-y: scroll;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+    li{
+      color: $font-color;
+      font-size: 1.6rem;
+      font-weight: bold;
+      line-height: 1.5em;
+      list-style: none;
     }
   }
 }

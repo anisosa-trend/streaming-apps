@@ -13,14 +13,18 @@ const addSongTitle = () => {
   }else{
     // 歌唱中の楽曲がある場合、歌い終わった楽曲に追加
     songTitles.push(singingTitle[0]);
+    setLocalStorage('songTitles', JSON.stringify(songTitles));
 
     // 歌唱中の楽曲を更新
     singingTitle.push(title);
     singingTitle.shift();
   }
   updateSongList();
+  
   document.getElementById("singing-title").textContent = title;
   document.getElementById("song-title-input").value = ""; // 入力欄をクリア
+
+  setLocalStorage('singingTitle', title);
 }
 
 const updateSongList = () => {
@@ -38,25 +42,17 @@ const updateSongList = () => {
 const clearSingingTitle = () => {
   singingTitle.shift();
   document.getElementById("singing-title").textContent = "---";
+  setLocalStorage('singingTitle', "---");
 }
 
 const clearSongTitles = () => {
   songTitles.length = 0;
   document.getElementById("song-title-list").innerHTML = "";
+  setLocalStorage('songTitles', JSON.stringify(songTitles));
   closeConfirmPopup();
 }
 
 const scrollToBottom = () => {
   const element = document.getElementById("song-title-list");
   element.scrollTop = element.scrollHeight - element.clientHeight;
-}
-
-const openConfirmPopup = () => {
-  const confirmPopup = document.getElementById("confirm-popup");
-  confirmPopup.style.display = "block";
-}
-
-const closeConfirmPopup = () => {
-  const confirmPopup = document.getElementById("confirm-popup");
-  confirmPopup.style.display = "none";
 }
