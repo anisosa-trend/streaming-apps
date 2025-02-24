@@ -19,11 +19,19 @@
 
 
         <div class="view">
-          <!-- 時計を表示する -->
-          <div class="clock">
-            <div class="clock_layout">
-              <p id="clock-time">--:--</p>
-              <p id="clock-date">--/-- ---</p>
+          <div class="streaming_info">
+            <!-- 時計を表示する -->
+            <div class="clock">
+              <div class="clock_layout">
+                <p id="clock-time">--:--</p>
+                <p id="clock-date">--/-- ---</p>
+              </div>
+            </div>
+
+            <!-- アカウント、ハッシュタグを表示する -->
+            <div class="account">
+              <p id="account-name"></p>
+              <p id="account-hashtag"></p>
             </div>
           </div>
 
@@ -39,13 +47,12 @@
             <ol id="song-title-list"></ol>
           </div>
         </div>
-
-
       </div>
     </div>
 
-    <script src="./asset/js/script.js"></script>
-    <script src="./asset/js/clock.js"></script>
-    <script src="./asset/js/localStorage.js"></script>
+    <script src="./constants/userSettings.js"></script>
+    <script src="./js/onload.js"></script>
+    <script src="./js/clock.js"></script>
+    <script src="./js/localStorage.js"></script>
   </body>
 </html>

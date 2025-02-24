@@ -1,5 +1,5 @@
-@use "asset/scss/constants" as *;
-@use "asset/scss/toggle" as *;
+@use "styles/constants" as *;
+@use "styles/toggle" as *;
 
 html {
   font-family: "Kiwi Maru", serif;
@@ -189,6 +189,12 @@ i{
   flex-direction: column;
   gap: 16px;
   width: 320px;
+  .streaming_info{
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    gap: 16px;
+    align-items: end;
+  }
   .clock_layout{
     display: inline-block;
     text-align: center;
@@ -203,6 +209,16 @@ i{
       font-size: 1.4rem;
       font-weight: bold;
       letter-spacing: 1px;
+    }
+  }
+  .account{
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    p{
+      color: $font-color;
+      font-size: 1.4rem;
+      font-weight: bold;
     }
   }
 
