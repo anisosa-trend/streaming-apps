@@ -128,17 +128,17 @@ i{
     position: relative;
   }
 
-  // .setting_button{
-  //   padding: 12px;
-  // }
+  .setting_button{
+    padding: 12px;
+  }
 
   .popup{
     display: none;
     position: absolute;
     top: -52px;
-    right: 0px;
+    right: -48px;
     width: calc(320px - 16px);
-    padding: 8px;
+    padding: 10px 8px;
     color: #ffffff;
     font-size: 1.2rem;
     background-color: $accent-color;
@@ -147,7 +147,7 @@ i{
       content: "";
       position: absolute;
       top: 100%;
-      right: 16px;
+      right: 66px;
       width: 10px;
       height: calc(10px / 2 * tan(60deg));
       clip-path: polygon(0 0, 100% 0, 50% 100%); /* 頂点の順序を調整 */
@@ -173,15 +173,28 @@ i{
       }
     }
   }
-  // #setting-popup.popup{
-  //   right: 0px;
-  //   &::after{
-  //     right: 16px;
-  //   }
-  //   .popup_contents{
-  //     grid-template-columns: 1fr max-content;
-  //   }
-  // }
+  #setting-popup.popup{
+    right: 0px;
+    padding: 8px;
+    &::after{
+      right: 16px;
+    }
+    .popup_contents{
+      grid-template-columns: 1fr max-content;
+    }
+    .color_setting{
+      display: grid;
+      grid-template-columns: 1fr max-content;
+      gap: 8px;
+      align-items: center;
+      #color-picker{
+        width: 27px;
+      }
+      .selected-color{
+        color: $contents-color;
+      }
+    }
+  }
 }
 
 .view{
@@ -244,13 +257,13 @@ i{
       height: 400px;
       padding: 0;
       margin: 0;
+      color: $font-color;
       border-bottom: 1px solid #000;
       overflow-y: scroll;
       scrollbar-width: none;
       -ms-overflow-style: none;
     }
     li{
-      color: $font-color;
       font-size: 1.6rem;
       font-weight: bold;
       line-height: 1.5em;

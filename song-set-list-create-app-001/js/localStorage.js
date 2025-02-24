@@ -21,7 +21,23 @@ window.addEventListener('storage', function(event) {
       }
       scrollToBottom();
       break;
-  
+      
+    case "selectedColor":
+      const selectedHexColor = getLocalStorage("selectedColor");
+      document.getElementById("clock-time").style.color = selectedHexColor;
+      document.getElementById("clock-time").style.borderColor = selectedHexColor;
+      document.getElementById("clock-date").style.color = selectedHexColor;
+      document.getElementById("account-name").style.color = selectedHexColor;
+      document.getElementById("account-hashtag").style.color = selectedHexColor;
+      document.getElementById("now-singing-heading").style.color = selectedHexColor;
+      document.getElementById("now-singing-heading").style.borderColor = selectedHexColor;
+      document.getElementById("singing-title").style.color = selectedHexColor;
+      document.getElementById("set-list-heading").style.color = selectedHexColor;
+      document.getElementById("set-list-heading").style.borderColor = selectedHexColor;
+      document.getElementById("song-title-list").style.color = selectedHexColor;
+      document.getElementById("song-title-list").style.borderColor = selectedHexColor;
+      break;
+
     default:
       break;
   }
@@ -30,3 +46,7 @@ window.addEventListener('storage', function(event) {
 const setLocalStorage = (key, value) => {
   localStorage.setItem(key, value);
 }
+
+const getLocalStorage = (key) => {
+  return localStorage.getItem(key);
+};

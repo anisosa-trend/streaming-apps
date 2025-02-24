@@ -44,7 +44,7 @@
           <div class="item">
             <div class="item_controller">
               <div class="item_controller_button_with_popup">
-                <button onclick="openConfirmPopup()"><i class="fa-regular fa-trash-can"></i></button>
+                <button onclick="handleConfirmPopup()"><i class="fa-regular fa-trash-can"></i></button>
 
                 <div id="confirm-popup" class="popup">
                   <div class="popup_contents">
@@ -55,29 +55,32 @@
                 </div>
               </div>
 
-              <!-- <div class="item_controller_button_with_popup">
-                <button class="setting_button" onclick="openSettingPopup()"><i class="fa-solid fa-gear"></i></button>
+              <div class="item_controller_button_with_popup">
+                <button class="setting_button" onclick="handleSettingPopup()"><i class="fa-solid fa-gear"></i></button>
 
                 <div id="setting-popup" class="popup">
                   <div class="popup_contents">
-                    <p>時計の表示設定</p>
+                    <!-- <p>時計の表示設定</p>
                     <div class="toggle_button">
                       <input id="toggle-clock" class="toggle_input" type='checkbox' onchange="setIsDisplayClock(this.checked)"/>
                       <label for="toggle-clock" class="toggle_label"></label>
+                    </div> -->
+
+                    <p>カラー設定</p>
+                    <div class="color_setting">
+                      <p id="selected-color">#555555</p>
+                      <input type="color" id="color-picker" value="#555555">
                     </div>
                   </div>
                 </div>
-              </div> -->
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
 
-    <script src="./js/script.js"></script>
-    <script src="./js/popup.js"></script>
-    <script src="./js/setting.js"></script>
+    <script src="./js/page-controller.js"></script>
     <script src="./js/localStorage.js"></script>
-    <script src="./js/utils/elementAccessor.js"></script>
   </body>
 </html>

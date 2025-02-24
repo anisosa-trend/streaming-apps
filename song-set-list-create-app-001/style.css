@@ -161,13 +161,16 @@ i {
 .controller .item_controller_button_with_popup {
   position: relative;
 }
+.controller .setting_button {
+  padding: 12px;
+}
 .controller .popup {
   display: none;
   position: absolute;
   top: -52px;
-  right: 0px;
+  right: -48px;
   width: 304px;
-  padding: 8px;
+  padding: 10px 8px;
   color: #ffffff;
   font-size: 1.2rem;
   background-color: #56453f;
@@ -177,7 +180,7 @@ i {
   content: "";
   position: absolute;
   top: 100%;
-  right: 16px;
+  right: 66px;
   width: 10px;
   height: 8.6602540378px;
   -webkit-clip-path: polygon(0 0, 100% 0, 50% 100%);
@@ -202,6 +205,28 @@ i {
 }
 .controller .popup .popup_contents button.cancel {
   background-color: #ffe6e6;
+}
+.controller #setting-popup.popup {
+  right: 0px;
+  padding: 8px;
+}
+.controller #setting-popup.popup::after {
+  right: 16px;
+}
+.controller #setting-popup.popup .popup_contents {
+  grid-template-columns: 1fr max-content;
+}
+.controller #setting-popup.popup .color_setting {
+  display: grid;
+  grid-template-columns: 1fr max-content;
+  gap: 8px;
+  align-items: center;
+}
+.controller #setting-popup.popup .color_setting #color-picker {
+  width: 27px;
+}
+.controller #setting-popup.popup .color_setting .selected-color {
+  color: #f0f0e5;
 }
 
 .view {
@@ -259,13 +284,13 @@ i {
   height: 400px;
   padding: 0;
   margin: 0;
+  color: #555555;
   border-bottom: 1px solid #000;
   overflow-y: scroll;
   scrollbar-width: none;
   -ms-overflow-style: none;
 }
 .view .set_list li {
-  color: #555555;
   font-size: 1.6rem;
   font-weight: bold;
   line-height: 1.5em;
