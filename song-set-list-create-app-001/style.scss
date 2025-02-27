@@ -1,5 +1,4 @@
 @use "styles/constants" as *;
-@use "styles/toggle" as *;
 
 html {
   font-family: "Kiwi Maru", serif;
@@ -195,6 +194,19 @@ i{
       }
     }
   }
+  #copy-popup.popup{
+    display: block;
+    right: -98px;
+    padding: 14px 8px;
+    transition: 0.3s;
+    opacity: 0;
+    &::after{
+      right: 114px;
+    }
+    .popup_contents{
+      grid-template-columns: 1fr;
+    }
+  }
 }
 
 .view{
@@ -202,6 +214,8 @@ i{
   flex-direction: column;
   gap: 16px;
   width: 320px;
+  padding: 8px 16px 16px;
+  background-color: rgba(0, 0, 0, 0.3);
   .streaming_info{
     display: grid;
     grid-template-columns: max-content 1fr;
@@ -254,8 +268,8 @@ i{
   
   .set_list{
     ol{
-      height: 400px;
-      padding: 0;
+      height: 320px;
+      padding: 8px 0;
       margin: 0;
       color: $font-color;
       border-bottom: 1px solid #000;

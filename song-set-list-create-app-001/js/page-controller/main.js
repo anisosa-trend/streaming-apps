@@ -52,7 +52,16 @@ const clearSongTitles = () => {
   closeConfirmPopup();
 }
 
-const scrollToBottom = () => {
-  const element = document.getElementById("song-title-list");
-  element.scrollTop = element.scrollHeight - element.clientHeight;
+const copySongTitles = () => {
+  if(nowSingingTitle[0] !== ""){
+    setLists.push(nowSingingTitle[0]);
+  }
+  const copyText = setLists.map((title, index) => `${index + 1}. ${title}`).join("\n");
+  navigator.clipboard.writeText(copyText);
+
+  const popup = document.getElementById("copy-popup");
+  popup.style.opacity = 1;
+  setTimeout(() => {
+    popup.style.opacity = 0;
+  }, 2000);
 }

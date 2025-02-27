@@ -44,6 +44,16 @@
           <div class="item">
             <div class="item_controller">
               <div class="item_controller_button_with_popup">
+                <button onclick="copySongTitles()"><i class="fa-solid fa-copy"></i></button>
+
+                <div id="copy-popup" class="popup">
+                  <div class="popup_contents">
+                    <p>セットリストをコピーしました</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="item_controller_button_with_popup">
                 <button onclick="handleConfirmPopup()"><i class="fa-regular fa-trash-can"></i></button>
 
                 <div id="confirm-popup" class="popup">
@@ -74,9 +84,10 @@
       </div>
     </div>
 
+    <script src="./js/utils/scripts.js"></script>
+    <script src="./js/utils/localStorage.js"></script>
     <script src="./js/page-controller/main.js"></script>
     <script src="./js/page-controller/popup.js"></script>
-    <script src="./js/page-controller/color-picker.js"></script>
-    <script src="./js/localStorage.js"></script>
+    <script src="./js/page-controller/colorPicker.js"></script>
   </body>
 </html>
