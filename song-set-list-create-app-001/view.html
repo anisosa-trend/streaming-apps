@@ -1,60 +1,63 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="format-detection" content="telephone=no">
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <title>楽曲タイトル管理</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Kiwi+Maru&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Kiwi+Maru&display=swap"
+      rel="stylesheet"
+    />
   </head>
 
   <body>
     <div id="main">
       <div id="container">
-
-
         <div id="view">
-          <div class="streaming_info">
-            <!-- 時計を表示する -->
+          <section class="streaming-info">
+            <!-- 時計 -->
             <div class="clock">
-              <div class="clock_layout">
+              <div class="clock-layout">
                 <p id="clock-time">--:--</p>
                 <p id="clock-date">--/-- ---</p>
               </div>
             </div>
 
-            <!-- アカウント、ハッシュタグを表示する -->
+            <!-- アカウント情報 -->
             <div class="account">
               <p id="account-name"></p>
               <p id="account-hashtag"></p>
             </div>
-          </div>
+          </section>
 
-          <!-- 歌唱中の楽曲を表示する -->
-          <div class="now_singing">
+          <!-- 歌唱中の楽曲 -->
+          <section class="now-singing">
             <h1 id="now-singing-heading">Now Singing</h1>
             <p id="singing-title">---</p>
-          </div>
+          </section>
 
-          <!-- セットリストを表示する -->
-          <div class="set_list">
+          <!-- セットリスト -->
+          <section class="set-list">
             <h1 id="set-list-heading">Set List</h1>
             <ol id="song-title-list"></ol>
-          </div>
+          </section>
         </div>
       </div>
     </div>
 
     <script src="./constants/userSettings.js"></script>
-    <script src="./js/utils/scripts.js"></script>
+    <script src="./js/utils/scroll.js"></script>
     <script src="./js/utils/localStorage.js"></script>
-    <script src="./js/page-view/onload.js"></script>
     <script src="./js/page-view/clock.js"></script>
-    <script src="./js/page-view/autoScroll.js"></script>
+    <script src="./js/page-view/onload.js"></script>
   </body>
 </html>

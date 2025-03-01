@@ -160,7 +160,7 @@ i {
   right: 8px;
   width: 10px;
   height: 7px;
-  background-color: #535353;
+  background-color: #56453f;
   -webkit-clip-path: polygon(0 0, 100% 0, 50% 100%);
           clip-path: polygon(0 0, 100% 0, 50% 100%);
   pointer-events: none;
@@ -169,7 +169,7 @@ i {
   min-width: 86px;
   height: 27px;
   padding: 4px 24px 4px 8px;
-  color: #333333;
+  color: #555555;
   font-size: 1em;
   background-color: #f0f0e5;
   border: 1px solid #d0d0d0;
@@ -266,23 +266,23 @@ i {
   padding: 8px 16px 16px;
   background-color: rgba(0, 0, 0, 0.3);
 }
-#view .streaming_info {
+#view .streaming-info {
   display: grid;
   grid-template-columns: max-content 1fr;
   gap: 16px;
   align-items: end;
 }
-#view .clock_layout {
+#view .clock-layout {
   display: inline-block;
   text-align: center;
 }
-#view .clock_layout #clock-time {
+#view .clock-layout #clock-time {
   margin-bottom: 4px;
   color: #56453f;
   font-size: 3.2rem;
   border-bottom: 1px solid #56453f;
 }
-#view .clock_layout #clock-date {
+#view .clock-layout #clock-date {
   color: #56453f;
   font-size: 1.4rem;
   font-weight: bold;
@@ -306,22 +306,22 @@ i {
   font-weight: bold;
   border-bottom: 1px solid #56453f;
 }
-#view .now_singing p {
+#view .now-singing p {
   color: #555555;
   font-size: 1.6rem;
   font-weight: bold;
 }
-#view .set_list ol {
+#view .set-list ol {
   height: 320px;
   padding: 8px 0;
   margin: 0;
   color: #555555;
-  border-bottom: 1px solid #000;
+  border-bottom: 1px solid #56453f;
   overflow-y: scroll;
   scrollbar-width: none;
   -ms-overflow-style: none;
 }
-#view .set_list li {
+#view .set-list li {
   font-size: 1.6rem;
   font-weight: bold;
   line-height: 1.5em;

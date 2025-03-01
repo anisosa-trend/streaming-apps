@@ -1,41 +1,34 @@
-const clock = () => {
-  // 現在の日時・時刻の情報を取得
-  const d = new Date();
+const clockController = (() => {
+  const domElements = {
+    clockDate: document.getElementById("clock-date"),
+    clockTime: document.getElementById("clock-time"),
+  };
 
-  // 年を取得
-  let year = d.getFullYear();
-  // 月を取得
-  let month = d.getMonth() + 1;
-  // 日を取得
-  let date = d.getDate();
-  // 曜日を取得
-  let dayNum = d.getDay();
-  const weekday = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-  let day = weekday[dayNum];
-  // 時を取得
-  let hour = d.getHours();
-  // 分を取得
-  let min = d.getMinutes();
-  // 秒を取得
-  let sec = d.getSeconds();
+  const updateClock = () => {
+    const now = new Date();
+    const year = now.getFullYear();
+    const month = (now.getMonth() + 1).toString().padStart(2, "0");
+    const date = now.getDate().toString().padStart(2, "0");
+    const day = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"][now.getDay()];
+    const hour = now.getHours().toString().padStart(2, "0");
+    const min = now.getMinutes().toString().padStart(2, "0");
+    const sec = now.getSeconds().toString().padStart(2, "0");
 
-  // 1桁の場合は0を足して2桁に
-  month = month < 10 ? "0" + month : month;
-  date = date < 10 ? "0" + date : date;
-  hour = hour < 10 ? "0" + hour : hour;
-  min = min < 10 ? "0" + min : min;
-  sec = sec < 10 ? "0" + sec : sec;
+    const today = `${month}/${date} ${day}`;
+    const time = `${hour}:${min}`;
 
-  // 日付・時刻の文字列を作成
-  // let today = `${year}.${month}.${date} ${day}`;
-  let today = `${month}/${date} ${day}`;
-  // let time = `${hour}:${min}:${sec}`;
-  let time = `${hour}:${min}`;
+    domElements.clockDate.textContent = today;
+    domElements.clockTime.textContent = time;
+  };
 
-  // 文字列を出力
-  document.getElementById("clock-date").textContent = today;
-  document.getElementById("clock-time").textContent = time;
-};
+  const init = () => {
+    updateClock(); // 初期表示
+    setInterval(updateClock, 1000); // 1秒ごとに更新
+  };
 
-// 1秒ごとにclock関数を呼び出す
-setInterval(clock, 1000);
+  return {
+    init,
+  };
+})();
+
+clockController.init();

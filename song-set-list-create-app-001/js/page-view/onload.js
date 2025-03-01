@@ -1,7 +1,18 @@
-window.onload = () => {
-  const accountNameElement = document.getElementById("account-name");
-  const accountHashtagElement = document.getElementById("account-hashtag");
+const onloadController = (() => {
+  const domElements = {
+    accountName: document.getElementById("account-name"),
+    accountHashtag: document.getElementById("account-hashtag"),
+  };
 
-  accountNameElement.textContent = userSettings.xAccount;
-  accountHashtagElement.textContent = userSettings.hashTag;
-};
+  const init = () => {
+    window.addEventListener("load", () => {
+      domElements.accountName.textContent = userSettings.xAccount;
+      domElements.accountHashtag.textContent = userSettings.hashTag;
+    });
+  };
+    return {
+      init,
+    };
+})();
+
+onloadController.init();

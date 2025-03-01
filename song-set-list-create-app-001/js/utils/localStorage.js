@@ -1,57 +1,109 @@
-window.addEventListener('storage', function(event) {
-  // event.key: 変更されたキー
-  // event.newValue: 新しい値
-  // event.oldValue: 古い値
-  // event.url: 変更が発生したページのURL (同一オリジンのみ)
-  // event.storageArea: localStorageオブジェクト
+const localStorageController = (() => {
+  // 定数定義
+  const STORAGE_KEYS = {
+    SINGING_TITLE: "singingTitle",
+    SONG_TITLES: "songTitles",
+    SELECTED_COLOR: "selectedColor",
+    BG_COLOR: "bgColor",
+  };
 
-  switch (event.key) {
-    case "singingTitle":
-      document.getElementById("singing-title").textContent = event.newValue;
-      break;
+  // DOM要素のキャッシュ
+  const domElements = {
+    singingTitle: document.getElementById("singing-title"),
+    songTitleList: document.getElementById("song-title-list"),
+    clockTime: document.getElementById("clock-time"),
+    clockDate: document.getElementById("clock-date"),
+    accountName: document.getElementById("account-name"),
+    accountHashtag: document.getElementById("account-hashtag"),
+    nowSingingHeading: document.getElementById("now-singing-heading"),
+    setListHeading: document.getElementById("set-list-heading"),
+    view: document.getElementById("view"),
+  };
 
-    case "songTitles":
-      const songTitles = JSON.parse(event.newValue);
-      const listElement = document.getElementById("song-title-list");
-      listElement.innerHTML = "";
-      for (let i = 0; i < songTitles.length; i++) {
-        const listItem = document.createElement("li");
-        listItem.textContent = `${i + 1}. ${songTitles[i]}`;
-        listElement.appendChild(listItem);
-      }
-      scrollToBottom();
-      break;
-      
-    case "selectedColor":
-      const selectedHexColor = getLocalStorage("selectedColor");
-      document.getElementById("clock-time").style.color = selectedHexColor;
-      document.getElementById("clock-time").style.borderColor = selectedHexColor;
-      document.getElementById("clock-date").style.color = selectedHexColor;
-      document.getElementById("account-name").style.color = selectedHexColor;
-      document.getElementById("account-hashtag").style.color = selectedHexColor;
-      document.getElementById("now-singing-heading").style.color = selectedHexColor;
-      document.getElementById("now-singing-heading").style.borderColor = selectedHexColor;
-      document.getElementById("singing-title").style.color = selectedHexColor;
-      document.getElementById("set-list-heading").style.color = selectedHexColor;
-      document.getElementById("set-list-heading").style.borderColor = selectedHexColor;
-      document.getElementById("song-title-list").style.color = selectedHexColor;
-      document.getElementById("song-title-list").style.borderColor = selectedHexColor;
-      break;
-    
-    case "bgColor":
-      const bgColor = getLocalStorage("bgColor");
-      document.getElementById("view").style.backgroundColor = bgColor;
-      break;
+  const colorElements = [
+    domElements.clockTime,
+    domElements.clockDate,
+    domElements.accountName,
+    domElements.accountHashtag,
+    domElements.nowSingingHeading,
+    domElements.singingTitle,
+    domElements.setListHeading,
+    domElements.songTitleList,
+  ];
 
-    default:
-      break;
-  }
-});
+  // DOM更新処理
+  const updateSingingTitle = (title) => {
+    domElements.singingTitle.textContent = title;
+  };
 
-const setLocalStorage = (key, value) => {
-  localStorage.setItem(key, value);
-}
+  const updateSongTitles = (songTitles) => {
+    domElements.songTitleList.innerHTML = "";
+    songTitles.forEach((title, index) => {
+      const listItem = document.createElement("li");
+      listItem.textContent = `${index + 1}. ${title}`;
+      domElements.songTitleList.appendChild(listItem);
+    });
+    scrollController.scrollToBottom();
+  };
 
-const getLocalStorage = (key) => {
-  return localStorage.getItem(key);
-};
+  const updateColor = (color) => {
+    colorElements.forEach((element) => {
+      element.style.color = color;
+      if (element.id !== "clock-time" && element.id !== "now-singing-heading" && element.id !== "set-list-heading" && element.id !== "song-title-list") return;
+      element.style.borderColor = color;
+    });
+  };
+
+  const updateBackgroundColor = (color) => {
+    domElements.view.style.backgroundColor = color;
+  };
+
+  //ストレージに依存しない値の取得関数
+  const getLocalStorageItem = (key) => {
+    return localStorage.getItem(key);
+  };
+
+  // ストレージ変更時の処理
+  const handleStorageChange = (event) => {
+    if (!event.newValue) return;
+
+    const { key, newValue } = event;
+
+    switch (key) {
+      case STORAGE_KEYS.SINGING_TITLE:
+        updateSingingTitle(newValue);
+        break;
+      case STORAGE_KEYS.SONG_TITLES:
+        updateSongTitles(JSON.parse(newValue));
+        break;
+      case STORAGE_KEYS.SELECTED_COLOR:
+        updateColor(getLocalStorageItem(STORAGE_KEYS.SELECTED_COLOR));
+        break;
+      case STORAGE_KEYS.BG_COLOR:
+        updateBackgroundColor(getLocalStorageItem(STORAGE_KEYS.BG_COLOR));
+        break;
+      default:
+        break;
+    }
+  };
+
+  // 初期化処理
+  const init = () => {
+    window.addEventListener("storage", handleStorageChange);
+  };
+
+  // 公開する関数
+  const setItem = (key, value) => {
+    localStorage.setItem(key, value);
+  };
+
+  const getItem = getLocalStorageItem;
+
+  return {
+    init,
+    setItem,
+    getItem,
+  };
+})();
+
+localStorageController.init();

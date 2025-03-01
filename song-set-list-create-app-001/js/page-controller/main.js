@@ -26,7 +26,7 @@ const mainController = (() => {
       singingTitle.push(title);
     } else {
       setLists.push(singingTitle[0]);
-      setLocalStorage('songTitles', JSON.stringify(setLists));
+      localStorageController.setItem('songTitles', JSON.stringify(setLists));
 
       singingTitle.push(title);
       singingTitle.shift();
@@ -35,7 +35,7 @@ const mainController = (() => {
     updateSongList();
     updateSingingTitleDisplay(title);
     clearSongTitleInput();
-    setLocalStorage('singingTitle', title);
+    localStorageController.setItem('singingTitle', title);
   };
 
   const enterKeyPressed = (event) => {
@@ -62,21 +62,21 @@ const mainController = (() => {
       listItem.textContent = `${index + 1}. ${title}`;
       elements.songTitleList.appendChild(listItem);
     });
-    scrollToBottom(); // 他の場所に存在する可能性があるので、スコープ外にする
+    scrollController.scrollToBottom();
   };
 
   const clearSingingTitle = () => {
     // 歌唱中の楽曲名を初期化
     singingTitle.shift();
     elements.singingTitleDisplay.textContent = "---";
-    setLocalStorage('singingTitle', "---");
+    localStorageController.setItem('singingTitle', "---");
   };
 
   // セットリストをクリアする
   const clearSongTitles = () => {
     setLists.length = 0;
     elements.songTitleList.innerHTML = "";
-    setLocalStorage('songTitles', JSON.stringify(setLists));
+    localStorageController.setItem('songTitles', JSON.stringify(setLists));
     popupController.closeConfirmPopup();
   };
 
@@ -94,11 +94,10 @@ const mainController = (() => {
     popupController.showCopyPopup();
   };
 
-  // select inputのbg-color-selectが変更されたときの処理
-  // valueを取得して、localstorageに保存する
+  // 背景設定を保存する
   const changeBackgroundColor = () => {
     const bgColor = elements.bgColorSelect.value;
-    setLocalStorage('bgColor', bgColor);
+    localStorageController.setItem('bgColor', bgColor);
   }
 
   //イベントを登録

@@ -166,7 +166,7 @@ i{
       min-width: 86px;
       height: 27px;
       padding: 4px 24px 4px 8px;
-      color: $text-color;
+      color: $font-color;
       font-size: 1em;
       background-color: $contents-color;
       border: 1px solid #d0d0d0;
@@ -273,13 +273,13 @@ i{
   width: 320px;
   padding: 8px 16px 16px;
   background-color: rgba(0, 0, 0, 0.3);
-  .streaming_info{
+  .streaming-info{
     display: grid;
     grid-template-columns: max-content 1fr;
     gap: 16px;
     align-items: end;
   }
-  .clock_layout{
+  .clock-layout{
     display: inline-block;
     text-align: center;
     #clock-time{
@@ -315,7 +315,7 @@ i{
     border-bottom: 1px solid $accent-color;
   }
 
-  .now_singing{
+  .now-singing{
     p{
       color: $font-color;
       font-size: 1.6rem;
@@ -323,13 +323,13 @@ i{
     }
   }
   
-  .set_list{
+  .set-list{
     ol{
       height: 320px;
       padding: 8px 0;
       margin: 0;
       color: $font-color;
-      border-bottom: 1px solid #000;
+      border-bottom: 1px solid $accent-color;
       overflow-y: scroll;
       scrollbar-width: none;
       -ms-overflow-style: none;
