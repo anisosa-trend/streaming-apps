@@ -122,22 +122,24 @@ i {
   padding: 12px;
 }
 .controller .popup {
-  display: none;
   position: absolute;
   top: -52px;
-  right: -48px;
+  right: -52px;
   width: 304px;
   padding: 10px 8px;
   color: #ffffff;
   font-size: 1.2rem;
   background-color: #56453f;
   border-radius: 4px;
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.3s;
 }
 .controller .popup::after {
   content: "";
   position: absolute;
   top: 100%;
-  right: 66px;
+  right: 69px;
   width: 10px;
   height: 8.6602540378px;
   -webkit-clip-path: polygon(0 0, 100% 0, 50% 100%);
@@ -157,10 +159,10 @@ i {
   align-items: center;
   justify-content: center;
 }
-.controller .popup .popup_contents button.allow {
+.controller .popup .popup_contents button#confirm-button {
   background-color: #e6ffea;
 }
-.controller .popup .popup_contents button.cancel {
+.controller .popup .popup_contents button#cancel-button {
   background-color: #ffe6e6;
 }
 .controller #setting-popup.popup {
@@ -168,7 +170,7 @@ i {
   padding: 8px;
 }
 .controller #setting-popup.popup::after {
-  right: 16px;
+  right: 18px;
 }
 .controller #setting-popup.popup .popup_contents {
   grid-template-columns: 1fr max-content;
@@ -187,13 +189,12 @@ i {
 }
 .controller #copy-popup.popup {
   display: block;
-  right: -98px;
+  right: -102px;
   padding: 14px 8px;
   transition: 0.3s;
-  opacity: 0;
 }
 .controller #copy-popup.popup::after {
-  right: 114px;
+  right: 118px;
 }
 .controller #copy-popup.popup .popup_contents {
   grid-template-columns: 1fr;

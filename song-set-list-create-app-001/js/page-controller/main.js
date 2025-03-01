@@ -5,7 +5,6 @@ const mainController = (() => {
   //DOMを取得
   const elements = {
     copyButton: document.getElementById("copy-button"),
-    copyPopup: document.getElementById("copy-popup"),
     songTitleInput: document.getElementById("song-title-input"),
     addButton: document.getElementById("add-button"),
     singingTitleClearButton: document.getElementById("singing-title-clear-button"),
@@ -71,15 +70,7 @@ const mainController = (() => {
     setLists.length = 0;
     elements.songTitleList.innerHTML = "";
     setLocalStorage('songTitles', JSON.stringify(setLists));
-    closeConfirmPopup();
-  };
-
-  //ポップアップの表示
-  const showCopyPopup = () => {
-    elements.copyPopup.style.opacity = 1;
-    setTimeout(() => {
-      elements.copyPopup.style.opacity = 0;
-    }, 2000);
+    popupController.closeConfirmPopup();
   };
 
   // セットリストをコピー
@@ -93,7 +84,7 @@ const mainController = (() => {
     const copyText = setLists.map((title, index) => `${index + 1}. ${title}`).join("\n");
     navigator.clipboard.writeText(copyText);
 
-    showCopyPopup();
+    popupController.showCopyPopup();
   };
 
   //イベントを登録

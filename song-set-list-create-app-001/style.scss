@@ -132,21 +132,23 @@ i{
   }
 
   .popup{
-    display: none;
     position: absolute;
     top: -52px;
-    right: -48px;
+    right: -52px;
     width: calc(320px - 16px);
     padding: 10px 8px;
     color: #ffffff;
     font-size: 1.2rem;
     background-color: $accent-color;
     border-radius: 4px;
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.3s;
     &::after{
       content: "";
       position: absolute;
       top: 100%;
-      right: 66px;
+      right: 69px;
       width: 10px;
       height: calc(10px / 2 * tan(60deg));
       clip-path: polygon(0 0, 100% 0, 50% 100%); /* 頂点の順序を調整 */
@@ -163,10 +165,10 @@ i{
         padding: 4px;
         align-items: center;
         justify-content: center;
-        &.allow {
+        &#confirm-button {
           background-color: #e6ffea;
         }
-        &.cancel {
+        &#cancel-button {
           background-color: #ffe6e6
         }
       }
@@ -176,7 +178,7 @@ i{
     right: 0px;
     padding: 8px;
     &::after{
-      right: 16px;
+      right: 18px;
     }
     .popup_contents{
       grid-template-columns: 1fr max-content;
@@ -196,12 +198,11 @@ i{
   }
   #copy-popup.popup{
     display: block;
-    right: -98px;
+    right: -102px;
     padding: 14px 8px;
     transition: 0.3s;
-    opacity: 0;
     &::after{
-      right: 114px;
+      right: 118px;
     }
     .popup_contents{
       grid-template-columns: 1fr;
