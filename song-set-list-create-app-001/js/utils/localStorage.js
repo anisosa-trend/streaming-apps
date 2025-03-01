@@ -37,6 +37,11 @@ window.addEventListener('storage', function(event) {
       document.getElementById("song-title-list").style.color = selectedHexColor;
       document.getElementById("song-title-list").style.borderColor = selectedHexColor;
       break;
+    
+    case "bgColor":
+      const bgColor = getLocalStorage("bgColor");
+      document.getElementById("view").style.backgroundColor = bgColor;
+      break;
 
     default:
       break;

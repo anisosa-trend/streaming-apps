@@ -72,7 +72,7 @@ i {
 
 .controller-popup {
   position: absolute;
-  top: -56px;
+  bottom: 50px;
   width: 304px;
   padding: 10px 8px;
   color: #ffffff;
@@ -87,7 +87,7 @@ i {
   content: "";
   position: absolute;
   top: 100%;
-  right: 18px;
+  right: 16px;
   width: 10px;
   height: 8.6602540378px;
   -webkit-clip-path: polygon(0 0, 100% 0, 50% 100%);
@@ -99,6 +99,9 @@ i {
   grid-template-columns: 1fr 25px 25px;
   gap: 8px;
   align-items: center;
+}
+.controller-popup .popup-content:not(:last-child) {
+  margin-bottom: 8px;
 }
 .controller-popup .popup-content button {
   display: flex;
@@ -118,7 +121,7 @@ i {
   padding: 15px 8px;
 }
 #copy-popup::after {
-  right: 118px;
+  right: 115px;
 }
 #copy-popup .popup-content {
   grid-template-columns: 1fr;
@@ -128,7 +131,7 @@ i {
   padding: 11.5px 8px;
 }
 #confirm-popup::after {
-  right: 69px;
+  right: 65px;
 }
 
 #setting-popup .popup-content {
@@ -140,11 +143,41 @@ i {
   gap: 8px;
   align-items: center;
 }
+#setting-popup .color-setting .selected-color {
+  color: #f0f0e5;
+}
 #setting-popup .color-setting #color-picker {
   width: 27px;
 }
-#setting-popup .color-setting .selected-color {
-  color: #f0f0e5;
+#setting-popup .background-setting {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+#setting-popup .background-setting::after {
+  content: "";
+  position: absolute;
+  right: 8px;
+  width: 10px;
+  height: 7px;
+  background-color: #535353;
+  -webkit-clip-path: polygon(0 0, 100% 0, 50% 100%);
+          clip-path: polygon(0 0, 100% 0, 50% 100%);
+  pointer-events: none;
+}
+#setting-popup .background-setting select {
+  min-width: 86px;
+  height: 27px;
+  padding: 4px 24px 4px 8px;
+  color: #333333;
+  font-size: 1em;
+  background-color: #f0f0e5;
+  border: 1px solid #d0d0d0;
+  border-radius: 3px;
+  cursor: pointer;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
 }
 
 .controller-item:not(:last-child) {
@@ -225,7 +258,7 @@ i {
   padding: 12px;
 }
 
-.view {
+#view {
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -233,39 +266,39 @@ i {
   padding: 8px 16px 16px;
   background-color: rgba(0, 0, 0, 0.3);
 }
-.view .streaming_info {
+#view .streaming_info {
   display: grid;
   grid-template-columns: max-content 1fr;
   gap: 16px;
   align-items: end;
 }
-.view .clock_layout {
+#view .clock_layout {
   display: inline-block;
   text-align: center;
 }
-.view .clock_layout #clock-time {
+#view .clock_layout #clock-time {
   margin-bottom: 4px;
   color: #56453f;
   font-size: 3.2rem;
   border-bottom: 1px solid #56453f;
 }
-.view .clock_layout #clock-date {
+#view .clock_layout #clock-date {
   color: #56453f;
   font-size: 1.4rem;
   font-weight: bold;
   letter-spacing: 1px;
 }
-.view .account {
+#view .account {
   display: flex;
   flex-direction: column;
   gap: 4px;
 }
-.view .account p {
-  color: #555555;
+#view .account p {
+  color: #56453f;
   font-size: 1.4rem;
   font-weight: bold;
 }
-.view h1 {
+#view h1 {
   padding-bottom: 4px;
   margin-bottom: 4px;
   color: #56453f;
@@ -273,12 +306,12 @@ i {
   font-weight: bold;
   border-bottom: 1px solid #56453f;
 }
-.view .now_singing p {
+#view .now_singing p {
   color: #555555;
   font-size: 1.6rem;
   font-weight: bold;
 }
-.view .set_list ol {
+#view .set_list ol {
   height: 320px;
   padding: 8px 0;
   margin: 0;
@@ -288,7 +321,7 @@ i {
   scrollbar-width: none;
   -ms-overflow-style: none;
 }
-.view .set_list li {
+#view .set_list li {
   font-size: 1.6rem;
   font-weight: bold;
   line-height: 1.5em;

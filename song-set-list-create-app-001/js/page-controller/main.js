@@ -11,6 +11,7 @@ const mainController = (() => {
     confirmButton: document.getElementById("confirm-button"),
     singingTitleDisplay: document.getElementById("singing-title"),
     songTitleList: document.getElementById("song-title-list"),
+    bgColorSelect: document.getElementById("bg-color-select"),
   };
 
   // 歌唱中の曲をセットリストに登録
@@ -35,6 +36,12 @@ const mainController = (() => {
     updateSingingTitleDisplay(title);
     clearSongTitleInput();
     setLocalStorage('singingTitle', title);
+  };
+
+  const enterKeyPressed = (event) => {
+    if (event.key === "Enter") {
+      addSongTitle();
+    }
   };
 
   // 歌唱中楽曲名を更新する
@@ -87,12 +94,21 @@ const mainController = (() => {
     popupController.showCopyPopup();
   };
 
+  // select inputのbg-color-selectが変更されたときの処理
+  // valueを取得して、localstorageに保存する
+  const changeBackgroundColor = () => {
+    const bgColor = elements.bgColorSelect.value;
+    setLocalStorage('bgColor', bgColor);
+  }
+
   //イベントを登録
   const init = () => {
     elements.copyButton.addEventListener("click", copySongTitles);
     elements.addButton.addEventListener("click", addSongTitle);
+    elements.songTitleInput.addEventListener("keydown", enterKeyPressed);
     elements.singingTitleClearButton.addEventListener("click", clearSingingTitle);
     elements.confirmButton.addEventListener("click", clearSongTitles);
+    elements.bgColorSelect.addEventListener("change", changeBackgroundColor);
   };
 
   return {

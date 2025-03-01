@@ -73,7 +73,7 @@ i{
 
 .controller-popup{
   position: absolute;
-  top: -56px;
+  bottom: 50px;
   // right: -52px;
   width: calc(320px - 16px);
   padding: 10px 8px;
@@ -88,7 +88,7 @@ i{
     content: "";
     position: absolute;
     top: 100%;
-    right: 18px;
+    right: 16px;
     width: 10px;
     height: calc(10px / 2 * tan(60deg));
     clip-path: polygon(0 0, 100% 0, 50% 100%); /* 頂点の順序を調整 */
@@ -99,6 +99,9 @@ i{
     grid-template-columns: 1fr 25px 25px;
     gap: 8px;
     align-items: center;
+    &:not(:last-child) {
+      margin-bottom: 8px;
+    }
     button {
       display: flex;
       width: 100%;
@@ -117,7 +120,7 @@ i{
 #copy-popup{
   padding: 15px 8px;
   &::after{
-    right: 118px;
+    right: 115px;
   }
   .popup-content{
     grid-template-columns: 1fr;
@@ -126,7 +129,7 @@ i{
 #confirm-popup{
   padding: 11.5px 8px;
   &::after{
-    right: 69px;
+    right: 65px;
   }
 }
 #setting-popup{
@@ -138,11 +141,38 @@ i{
     grid-template-columns: 1fr max-content;
     gap: 8px;
     align-items: center;
+    .selected-color{
+      color: $contents-color;
+    }
     #color-picker{
       width: 27px;
     }
-    .selected-color{
-      color: $contents-color;
+  }
+  .background-setting{
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    &::after {
+      content: '';
+      position: absolute;
+      right: 8px;
+      width: 10px;
+      height: 7px;
+      background-color: $accent-color;
+      clip-path: polygon(0 0, 100% 0, 50% 100%);
+      pointer-events: none;
+    }
+    select {
+      min-width: 86px;
+      height: 27px;
+      padding: 4px 24px 4px 8px;
+      color: $text-color;
+      font-size: 1em;
+      background-color: $contents-color;
+      border: 1px solid #d0d0d0;
+      border-radius: 3px;
+      cursor: pointer;
+      appearance: none;
     }
   }
 }
@@ -236,7 +266,7 @@ i{
 
 
 
-.view{
+#view{
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -270,7 +300,7 @@ i{
     flex-direction: column;
     gap: 4px;
     p{
-      color: $font-color;
+      color: $accent-color;
       font-size: 1.4rem;
       font-weight: bold;
     }
