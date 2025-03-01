@@ -1,67 +1,114 @@
-const nowSingingTitle = []; // 歌唱中の楽曲名を格納する配列
-const setLists = []; // 歌い終わった楽曲名を格納する配列
+const mainController = (() => {
+  let singingTitle = []; // 歌唱中の曲名
+  let setLists = []; // セットリスト（歌い終わった曲名）
 
-const addSongTitle = () => {
-  const title = document.getElementById("song-title-input").value;
+  //DOMを取得
+  const elements = {
+    copyButton: document.getElementById("copy-button"),
+    copyPopup: document.getElementById("copy-popup"),
+    songTitleInput: document.getElementById("song-title-input"),
+    addButton: document.getElementById("add-button"),
+    singingTitleClearButton: document.getElementById("singing-title-clear-button"),
+    confirmButton: document.getElementById("confirm-button"),
+    singingTitleDisplay: document.getElementById("singing-title"),
+    songTitleList: document.getElementById("song-title-list"),
+  };
 
-  // 入力がない場合は何もしない
-  if(title.trim() === "") return;
+  // 歌唱中の曲をセットリストに登録
+  const addSongTitle = () => {
+    const title = elements.songTitleInput.value;
 
-  if(nowSingingTitle.length === 0 || nowSingingTitle[0] === ""){
-    // 歌唱中の楽曲がない場合、歌唱中の楽曲に追加
-    nowSingingTitle.push(title);
-  }else{
-    // 歌唱中の楽曲がある場合、歌い終わった楽曲に追加
-    setLists.push(nowSingingTitle[0]);
+    //入力がなければ処理をしない
+    if (title.trim() === "") return;
+
+    // 歌唱中がなければ歌唱中に入れる。あればセットリストに入れて、歌唱中を更新する
+    if (singingTitle.length === 0 || !singingTitle[0]) {
+      singingTitle.push(title);
+    } else {
+      setLists.push(singingTitle[0]);
+      setLocalStorage('songTitles', JSON.stringify(setLists));
+
+      singingTitle.push(title);
+      singingTitle.shift();
+    }
+    //各処理の実行
+    updateSongList();
+    updateSingingTitleDisplay(title);
+    clearSongTitleInput();
+    setLocalStorage('singingTitle', title);
+  };
+
+  // 歌唱中楽曲名を更新する
+  const updateSingingTitleDisplay = (title) => {
+    elements.singingTitleDisplay.textContent = title;
+  }
+
+  // 入力欄をクリアする
+  const clearSongTitleInput = () => {
+    elements.songTitleInput.value = "";
+  }
+
+  //セットリストを更新する
+  const updateSongList = () => {
+    elements.songTitleList.innerHTML = "";
+    setLists.forEach((title, index) => {
+      const listItem = document.createElement("li");
+      listItem.textContent = `${index + 1}. ${title}`;
+      elements.songTitleList.appendChild(listItem);
+    });
+    scrollToBottom(); // 他の場所に存在する可能性があるので、スコープ外にする
+  };
+
+  const clearSingingTitle = () => {
+    // 歌唱中の楽曲名を初期化
+    singingTitle.shift();
+    elements.singingTitleDisplay.textContent = "---";
+    setLocalStorage('singingTitle', "---");
+  };
+
+  // セットリストをクリアする
+  const clearSongTitles = () => {
+    setLists.length = 0;
+    elements.songTitleList.innerHTML = "";
     setLocalStorage('songTitles', JSON.stringify(setLists));
+    closeConfirmPopup();
+  };
 
-    // 歌唱中の楽曲を更新
-    nowSingingTitle.push(title);
-    nowSingingTitle.shift();
-  }
-  updateSongList();
-  
-  document.getElementById("singing-title").textContent = title;
-  document.getElementById("song-title-input").value = ""; // 入力欄をクリア
+  //ポップアップの表示
+  const showCopyPopup = () => {
+    elements.copyPopup.style.opacity = 1;
+    setTimeout(() => {
+      elements.copyPopup.style.opacity = 0;
+    }, 2000);
+  };
 
-  setLocalStorage('singingTitle', title);
-}
+  // セットリストをコピー
+  const copySongTitles = () => {
+    //歌唱中楽曲があればセットリストへ登録
+    if(singingTitle[0] !== ""){
+      setLists.push(singingTitle[0]);
+    }
 
-const updateSongList = () => {
-  const listElement = document.getElementById("song-title-list");
-  listElement.innerHTML = "";
+    // セットリストをテキストに変換してクリップボードにコピー
+    const copyText = setLists.map((title, index) => `${index + 1}. ${title}`).join("\n");
+    navigator.clipboard.writeText(copyText);
 
-  for (let i = 0; i < setLists.length; i++) {
-    const listItem = document.createElement("li");
-    listItem.textContent = `${i + 1}. ${setLists[i]}`;
-    listElement.appendChild(listItem);
-  }
-  scrollToBottom();
-}
+    showCopyPopup();
+  };
 
-const clearSingingTitle = () => {
-  nowSingingTitle.shift();
-  document.getElementById("singing-title").textContent = "---";
-  setLocalStorage('singingTitle', "---");
-}
+  //イベントを登録
+  const init = () => {
+    elements.copyButton.addEventListener("click", copySongTitles);
+    elements.addButton.addEventListener("click", addSongTitle);
+    elements.singingTitleClearButton.addEventListener("click", clearSingingTitle);
+    elements.confirmButton.addEventListener("click", clearSongTitles);
+  };
 
-const clearSongTitles = () => {
-  setLists.length = 0;
-  document.getElementById("song-title-list").innerHTML = "";
-  setLocalStorage('songTitles', JSON.stringify(setLists));
-  closeConfirmPopup();
-}
+  return {
+    init,
+    setLists, // setLists を外部からアクセスできるように公開
+    singingTitle, // nowSingingTitle を外部からアクセスできるように公開
+  };
+})();
 
-const copySongTitles = () => {
-  if(nowSingingTitle[0] !== ""){
-    setLists.push(nowSingingTitle[0]);
-  }
-  const copyText = setLists.map((title, index) => `${index + 1}. ${title}`).join("\n");
-  navigator.clipboard.writeText(copyText);
-
-  const popup = document.getElementById("copy-popup");
-  popup.style.opacity = 1;
-  setTimeout(() => {
-    popup.style.opacity = 0;
-  }, 2000);
-}
+mainController.init();

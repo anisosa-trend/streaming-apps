@@ -16,11 +16,12 @@
   <body>
     <div id="main">
       <div id="container">
+
         <div class="controller">
           <div class="item">
             <div class="item_input">
               <input type="text" id="song-title-input" placeholder="曲名を入力">
-              <button onclick="addSongTitle()"><i class="fa-solid fa-plus"></i></button>
+              <button id="add-button"><i class="fa-solid fa-plus"></i></button>
             </div>
           </div>
 
@@ -30,7 +31,7 @@
                 <h1>歌唱中の楽曲</h1>
                 <div class="singing_title_layout">
                   <p id="singing-title">---</p>
-                  <i class="fa-solid fa-xmark" onclick="clearSingingTitle()"></i>
+                  <i id="singing-title-clear-button" class="fa-solid fa-xmark"></i>
                 </div>
               </div>
 
@@ -44,7 +45,7 @@
           <div class="item">
             <div class="item_controller">
               <div class="item_controller_button_with_popup">
-                <button onclick="copySongTitles()"><i class="fa-solid fa-copy"></i></button>
+                <button id="copy-button"><i class="fa-solid fa-copy"></i></button>
 
                 <div id="copy-popup" class="popup">
                   <div class="popup_contents">
@@ -54,19 +55,19 @@
               </div>
 
               <div class="item_controller_button_with_popup">
-                <button onclick="handleConfirmPopup()"><i class="fa-regular fa-trash-can"></i></button>
+                <button id="list-clear-button"><i class="fa-regular fa-trash-can"></i></button>
 
                 <div id="confirm-popup" class="popup">
                   <div class="popup_contents">
                     <p>本当にセットリストを削除しますか？</p>
-                    <button class="allow" onclick="clearSongTitles()"><i class="fa-solid fa-check"></i></button>
-                    <button class="cancel" onclick="closeConfirmPopup()"><i class="fa-solid fa-xmark"></i></button>
+                    <button id="confirm-button" class="allow"><i class="fa-solid fa-check"></i></button>
+                    <button id="cancel-button"><i class="fa-solid fa-xmark"></i></button>
                   </div>
                 </div>
               </div>
 
               <div class="item_controller_button_with_popup">
-                <button class="setting_button" onclick="handleSettingPopup()"><i class="fa-solid fa-gear"></i></button>
+                <button id="setting-button"><i class="fa-solid fa-gear"></i></button>
 
                 <div id="setting-popup" class="popup">
                   <div class="popup_contents">
@@ -81,6 +82,7 @@
             </div>
           </div>
         </div>
+
       </div>
     </div>
 

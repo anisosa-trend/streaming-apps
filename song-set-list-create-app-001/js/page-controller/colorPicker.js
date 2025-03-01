@@ -1,8 +1,22 @@
-const colorPicker = document.getElementById("color-picker");
-const selectedColor = document.getElementById("selected-color");
+const colorPickerController = (() => {
+  const elements = {
+    colorPicker: document.getElementById("color-picker"),
+    selectedColor: document.getElementById("selected-color"),
+  }
 
-colorPicker.addEventListener("input", function(event) {
-  const selectedHexColor = event.target.value;
-  selectedColor.textContent = event.target.value;
-  localStorage.setItem("selectedColor", selectedHexColor);
-});
+  const handleColorChange = (event) => {
+    const selectedHexColor = event.target.value;
+    elements.selectedColor.textContent = selectedHexColor;
+    localStorage.setItem("selectedColor", selectedHexColor);
+  };
+
+  const init = () => {
+    elements.colorPicker.addEventListener("input", handleColorChange);
+  };
+
+  return {
+    init,
+  };
+})();
+
+colorPickerController.init();
