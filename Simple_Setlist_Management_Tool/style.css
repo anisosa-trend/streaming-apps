@@ -184,6 +184,7 @@ i {
   margin-bottom: 12px;
 }
 .controller-item .input-group {
+  position: relative;
   display: flex;
   align-items: flex-start;
   gap: 12px;
@@ -201,6 +202,24 @@ i {
 .controller-item .input-group input[type=text]:focus {
   outline: none;
   box-shadow: 0 0 0 2px #56453f;
+}
+.controller-item .input-group input[type=text]::-moz-placeholder {
+  color: #c39e88;
+}
+.controller-item .input-group input[type=text]::placeholder {
+  color: #c39e88;
+}
+.controller-item .input-group #add-button {
+  position: absolute;
+  top: 50%;
+  right: 4px;
+  padding: 8px 10px;
+  transform: translateY(-50%);
+  border: none;
+  border-left: 2px solid #c39e88;
+}
+.controller-item .input-group #add-button i {
+  font-size: 1.2rem;
 }
 .controller-item.list-area {
   padding: 12px;
@@ -308,12 +327,13 @@ i {
 }
 #view .now-singing p {
   color: #555555;
-  font-size: 1.6rem;
+  font-size: 1.4rem;
   font-weight: bold;
+  line-height: 1em;
 }
 #view .set-list ol {
   height: 320px;
-  padding: 8px 0;
+  padding: 0 0 8px;
   margin: 0;
   color: #555555;
   border-bottom: 1px solid #56453f;
@@ -322,7 +342,7 @@ i {
   -ms-overflow-style: none;
 }
 #view .set-list li {
-  font-size: 1.6rem;
+  font-size: 1.4rem;
   font-weight: bold;
   line-height: 1.5em;
   list-style: none;

@@ -183,6 +183,7 @@ i{
   }
 
   .input-group{
+    position: relative;
     display: flex;
     align-items: flex-start;
     gap: 12px;
@@ -198,6 +199,21 @@ i{
       &:focus {
         outline: none;
         box-shadow: 0 0 0 2px $accent-color;
+      }
+      &::placeholder {
+        color: $base-color;
+      }
+    }
+    #add-button{
+      position: absolute;
+      top: 50%;
+      right: 4px;
+      padding: 8px 10px;
+      transform: translateY(-50%);
+      border: none;
+      border-left: 2px solid $base-color;
+      i{
+        font-size: 1.2rem;
       }
     }
   }
@@ -318,15 +334,16 @@ i{
   .now-singing{
     p{
       color: $font-color;
-      font-size: 1.6rem;
+      font-size: 1.4rem;
       font-weight: bold;
+      line-height: 1em;
     }
   }
   
   .set-list{
     ol{
       height: 320px;
-      padding: 8px 0;
+      padding: 0 0 8px;
       margin: 0;
       color: $font-color;
       border-bottom: 1px solid $accent-color;
@@ -335,7 +352,7 @@ i{
       -ms-overflow-style: none;
     }
     li{
-      font-size: 1.6rem;
+      font-size: 1.4rem;
       font-weight: bold;
       line-height: 1.5em;
       list-style: none;

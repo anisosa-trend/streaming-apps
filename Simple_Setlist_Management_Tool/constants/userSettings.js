@@ -1,4 +1,4 @@
 const userSettings = {
-  xAccount: "@shirafuji_aana",
+  xAccount: "@Xアカウント名",
   hashTag: "#ハッシュタグ",
 }
