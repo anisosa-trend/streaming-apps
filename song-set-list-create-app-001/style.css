@@ -14,7 +14,7 @@ p {
   margin: 0;
 }
 
-button {
+button[data-button=primary] {
   display: inline-block;
   padding: 12px 14px;
   margin: 0;
@@ -26,11 +26,35 @@ button {
   border-radius: 4px;
   cursor: pointer;
 }
-button.text_icon_button {
+button[data-button=primary].text-icon-button {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
+}
+
+button[data-button=secondary] {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 14px;
+  margin: 0;
+  color: #56453f;
+  font-size: 1.2rem;
+  font-weight: bold;
+  background-color: #56453f;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button[data-button=tertiary] {
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+  border: none;
+  cursor: pointer;
 }
 
 i {
@@ -39,92 +63,16 @@ i {
   cursor: pointer;
 }
 
-.controller {
+#controller {
   width: 320px;
   padding: 16px;
   border-radius: 8px;
   background-color: #a47764;
 }
-.controller .item:not(:last-child) {
-  margin-bottom: 12px;
-}
-.controller .item_input {
-  display: flex;
-  align-items: flex-start;
-  gap: 12px;
-}
-.controller .item_input input[type=text] {
-  width: calc(100% - 20px);
-  padding: 12px;
-  color: #555555;
-  font-size: 1.4rem;
-  font-weight: bold;
-  border: none;
-  border-radius: 4px;
-  background-color: #f0f0e5;
-}
-.controller .item_input input[type=text]:focus {
-  outline: none;
-  box-shadow: 0 0 0 2px #56453f;
-}
-.controller .item_list {
-  padding: 12px;
-  background-color: #f0f0e5;
-  border-radius: 4px;
-}
-.controller .item_list .item_list_section:not(:last-child) {
-  margin-bottom: 12px;
-}
-.controller .item_list .singing_title_layout {
-  display: grid;
-  grid-template-columns: 1fr max-content;
-  gap: 8px;
-  align-items: center;
-}
-.controller .item_list h1 {
-  padding-bottom: 4px;
-  margin-bottom: 4px;
-  color: #c39e88;
-  font-size: 1.4rem;
-  font-weight: bold;
-  border-bottom: 2px solid #c39e88;
-}
-.controller .item_list p {
-  color: #555555;
-  font-size: 1.4rem;
-  font-weight: bold;
-}
-.controller .item_list ol {
-  height: 219px;
-  padding: 0;
-  margin: 0;
-  border-radius: 4px;
-  overflow-y: scroll;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-}
-.controller .item_list li {
-  color: #555555;
-  font-size: 1.4rem;
-  font-weight: bold;
-  line-height: 1.5em;
-  list-style: none;
-}
-.controller .item_controller {
-  display: flex;
-  justify-content: end;
-  gap: 8px;
-}
-.controller .item_controller_button_with_popup {
-  position: relative;
-}
-.controller .setting_button {
-  padding: 12px;
-}
-.controller .popup {
+
+.controller-popup {
   position: absolute;
-  top: -52px;
-  right: -52px;
+  top: -56px;
   width: 304px;
   padding: 10px 8px;
   color: #ffffff;
@@ -135,69 +83,146 @@ i {
   visibility: hidden;
   transition: 0.3s;
 }
-.controller .popup::after {
+.controller-popup::after {
   content: "";
   position: absolute;
   top: 100%;
-  right: 69px;
+  right: 18px;
   width: 10px;
   height: 8.6602540378px;
   -webkit-clip-path: polygon(0 0, 100% 0, 50% 100%);
           clip-path: polygon(0 0, 100% 0, 50% 100%); /* 頂点の順序を調整 */
   background-color: #56453f;
 }
-.controller .popup .popup_contents {
+.controller-popup .popup-content {
   display: grid;
   grid-template-columns: 1fr 25px 25px;
   gap: 8px;
   align-items: center;
 }
-.controller .popup .popup_contents button {
+.controller-popup .popup-content button {
   display: flex;
   width: 100%;
   padding: 4px;
   align-items: center;
   justify-content: center;
 }
-.controller .popup .popup_contents button#confirm-button {
+.controller-popup .popup-content button#confirm-button {
   background-color: #e6ffea;
 }
-.controller .popup .popup_contents button#cancel-button {
+.controller-popup .popup-content button#cancel-button {
   background-color: #ffe6e6;
 }
-.controller #setting-popup.popup {
-  right: 0px;
-  padding: 8px;
+
+#copy-popup {
+  padding: 15px 8px;
 }
-.controller #setting-popup.popup::after {
-  right: 18px;
+#copy-popup::after {
+  right: 118px;
 }
-.controller #setting-popup.popup .popup_contents {
+#copy-popup .popup-content {
+  grid-template-columns: 1fr;
+}
+
+#confirm-popup {
+  padding: 11.5px 8px;
+}
+#confirm-popup::after {
+  right: 69px;
+}
+
+#setting-popup .popup-content {
   grid-template-columns: 1fr max-content;
 }
-.controller #setting-popup.popup .color_setting {
+#setting-popup .color-setting {
   display: grid;
   grid-template-columns: 1fr max-content;
   gap: 8px;
   align-items: center;
 }
-.controller #setting-popup.popup .color_setting #color-picker {
+#setting-popup .color-setting #color-picker {
   width: 27px;
 }
-.controller #setting-popup.popup .color_setting .selected-color {
+#setting-popup .color-setting .selected-color {
   color: #f0f0e5;
 }
-.controller #copy-popup.popup {
-  display: block;
-  right: -102px;
-  padding: 14px 8px;
-  transition: 0.3s;
+
+.controller-item:not(:last-child) {
+  margin-bottom: 12px;
 }
-.controller #copy-popup.popup::after {
-  right: 118px;
+.controller-item .input-group {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
 }
-.controller #copy-popup.popup .popup_contents {
-  grid-template-columns: 1fr;
+.controller-item .input-group input[type=text] {
+  width: calc(100% - 20px);
+  padding: 12px;
+  color: #555555;
+  font-size: 1.4rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 4px;
+  background-color: #f0f0e5;
+}
+.controller-item .input-group input[type=text]:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px #56453f;
+}
+.controller-item.list-area {
+  padding: 12px;
+  background-color: #f0f0e5;
+  border-radius: 4px;
+}
+.controller-item.list-area .item_list_section:not(:last-child) {
+  margin-bottom: 12px;
+}
+.controller-item .list-section:not(:last-child) {
+  margin-bottom: 12px;
+}
+.controller-item .list-section h2 {
+  padding-bottom: 4px;
+  margin-bottom: 4px;
+  color: #c39e88;
+  font-size: 1.4rem;
+  font-weight: bold;
+  border-bottom: 2px solid #c39e88;
+}
+.controller-item .list-section p {
+  color: #555555;
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+.controller-item .list-section ol {
+  height: 219px;
+  padding: 0;
+  margin: 0;
+  border-radius: 4px;
+  overflow-y: scroll;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.controller-item .list-section li {
+  color: #555555;
+  font-size: 1.4rem;
+  font-weight: bold;
+  line-height: 1.5em;
+  list-style: none;
+}
+.controller-item .list-section .singing-title-group {
+  display: grid;
+  grid-template-columns: 1fr max-content;
+  gap: 8px;
+  align-items: center;
+}
+.controller-item .controller-button-group {
+  position: relative;
+  display: flex;
+  justify-content: end;
+  gap: 8px;
+}
+.controller-item .controller-button-group #setting-button {
+  padding: 12px;
 }
 
 .view {

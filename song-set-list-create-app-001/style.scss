@@ -15,7 +15,7 @@ p{
   margin: 0;
 }
 
-button {
+button[data-button="primary"] {
   display: inline-block;
   padding: 12px 14px;
   margin: 0;
@@ -26,12 +26,36 @@ button {
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  &.text_icon_button{
+  &.text-icon-button{
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 8px;
   }
+}
+
+button[data-button="secondary"] {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 14px;
+  margin: 0;
+  color: $accent-color;
+  font-size: 1.2rem;
+  font-weight: bold;
+  background-color: $accent-color;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button[data-button="tertiary"] {
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+  border: none;
+  cursor: pointer;
 }
 
 i{
@@ -40,18 +64,95 @@ i{
   cursor: pointer;
 }
 
-.controller{
+#controller{
   width: 320px;
   padding: 16px;
   border-radius: 8px;
   background-color: $main-color;
-  .item {
-    &:not(:last-child) {
-      margin-bottom: 12px;
+}
+
+.controller-popup{
+  position: absolute;
+  top: -56px;
+  // right: -52px;
+  width: calc(320px - 16px);
+  padding: 10px 8px;
+  color: #ffffff;
+  font-size: 1.2rem;
+  background-color: $accent-color;
+  border-radius: 4px;
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.3s;
+  &::after{
+    content: "";
+    position: absolute;
+    top: 100%;
+    right: 18px;
+    width: 10px;
+    height: calc(10px / 2 * tan(60deg));
+    clip-path: polygon(0 0, 100% 0, 50% 100%); /* 頂点の順序を調整 */
+    background-color: $accent-color;
+  }
+  .popup-content{
+    display: grid;
+    grid-template-columns: 1fr 25px 25px;
+    gap: 8px;
+    align-items: center;
+    button {
+      display: flex;
+      width: 100%;
+      padding: 4px;
+      align-items: center;
+      justify-content: center;
+      &#confirm-button {
+        background-color: #e6ffea;
+      }
+      &#cancel-button {
+        background-color: #ffe6e6
+      }
     }
   }
+}
+#copy-popup{
+  padding: 15px 8px;
+  &::after{
+    right: 118px;
+  }
+  .popup-content{
+    grid-template-columns: 1fr;
+  }
+}
+#confirm-popup{
+  padding: 11.5px 8px;
+  &::after{
+    right: 69px;
+  }
+}
+#setting-popup{
+  .popup-content{
+    grid-template-columns: 1fr max-content;
+  }
+  .color-setting{
+    display: grid;
+    grid-template-columns: 1fr max-content;
+    gap: 8px;
+    align-items: center;
+    #color-picker{
+      width: 27px;
+    }
+    .selected-color{
+      color: $contents-color;
+    }
+  }
+}
 
-  .item_input{
+.controller-item {
+  &:not(:last-child) {
+    margin-bottom: 12px;
+  }
+
+  .input-group{
     display: flex;
     align-items: flex-start;
     gap: 12px;
@@ -71,7 +172,7 @@ i{
     }
   }
 
-  .item_list{
+  &.list-area {
     padding: 12px;
     background-color: $contents-color;
     border-radius: 4px;
@@ -80,13 +181,12 @@ i{
         margin-bottom: 12px;
       }
     }
-    .singing_title_layout{
-      display: grid;
-      grid-template-columns: 1fr max-content;
-      gap: 8px;
-      align-items: center;
+  }
+  .list-section{
+    &:not(:last-child) {
+      margin-bottom: 12px;
     }
-    h1{
+    h2{
       padding-bottom: 4px;
       margin-bottom: 4px;
       color: $base-color;
@@ -115,100 +215,26 @@ i{
       line-height: 1.5em;
       list-style: none;
     }
+    .singing-title-group{
+      display: grid;
+      grid-template-columns: 1fr max-content;
+      gap: 8px;
+      align-items: center;
+    }
   }
 
-  .item_controller{
+  .controller-button-group{
+    position: relative;
     display: flex;
     justify-content: end;
     gap: 8px;
-  }
-
-  .item_controller_button_with_popup{
-    position: relative;
-  }
-
-  .setting_button{
-    padding: 12px;
-  }
-
-  .popup{
-    position: absolute;
-    top: -52px;
-    right: -52px;
-    width: calc(320px - 16px);
-    padding: 10px 8px;
-    color: #ffffff;
-    font-size: 1.2rem;
-    background-color: $accent-color;
-    border-radius: 4px;
-    opacity: 0;
-    visibility: hidden;
-    transition: 0.3s;
-    &::after{
-      content: "";
-      position: absolute;
-      top: 100%;
-      right: 69px;
-      width: 10px;
-      height: calc(10px / 2 * tan(60deg));
-      clip-path: polygon(0 0, 100% 0, 50% 100%); /* 頂点の順序を調整 */
-      background-color: $accent-color;
-    }
-    .popup_contents{
-      display: grid;
-      grid-template-columns: 1fr 25px 25px;
-      gap: 8px;
-      align-items: center;
-      button {
-        display: flex;
-        width: 100%;
-        padding: 4px;
-        align-items: center;
-        justify-content: center;
-        &#confirm-button {
-          background-color: #e6ffea;
-        }
-        &#cancel-button {
-          background-color: #ffe6e6
-        }
-      }
-    }
-  }
-  #setting-popup.popup{
-    right: 0px;
-    padding: 8px;
-    &::after{
-      right: 18px;
-    }
-    .popup_contents{
-      grid-template-columns: 1fr max-content;
-    }
-    .color_setting{
-      display: grid;
-      grid-template-columns: 1fr max-content;
-      gap: 8px;
-      align-items: center;
-      #color-picker{
-        width: 27px;
-      }
-      .selected-color{
-        color: $contents-color;
-      }
-    }
-  }
-  #copy-popup.popup{
-    display: block;
-    right: -102px;
-    padding: 14px 8px;
-    transition: 0.3s;
-    &::after{
-      right: 118px;
-    }
-    .popup_contents{
-      grid-template-columns: 1fr;
+    #setting-button{
+      padding: 12px;
     }
   }
 }
+
+
 
 .view{
   display: flex;
