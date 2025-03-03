@@ -1,0 +1,366 @@
+@use "styles/constants" as *;
+
+html {
+  font-family: "Kiwi Maru", serif;
+  font-size: 10px;
+  font-weight: 400;
+  font-style: normal;
+}
+
+h1, h2, h3, h4 {
+  margin: 0;
+}
+
+p{
+  margin: 0;
+}
+
+button[data-button="primary"] {
+  display: inline-block;
+  padding: 12px 14px;
+  margin: 0;
+  color: $accent-color;
+  font-size: 1.2rem;
+  font-weight: bold;
+  background-color: $accent-color;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  &.text-icon-button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+}
+
+button[data-button="secondary"] {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 14px;
+  margin: 0;
+  color: $accent-color;
+  font-size: 1.2rem;
+  font-weight: bold;
+  background-color: $accent-color;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button[data-button="tertiary"] {
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+  border: none;
+  cursor: pointer;
+}
+
+i{
+  color: $base-color;
+  font-size: 1.6rem;
+  cursor: pointer;
+}
+
+#controller{
+  width: 320px;
+  padding: 16px;
+  border-radius: 8px;
+  background-color: $main-color;
+}
+
+.controller-popup{
+  position: absolute;
+  bottom: 50px;
+  // right: -52px;
+  width: calc(320px - 16px);
+  padding: 10px 8px;
+  color: #ffffff;
+  font-size: 1.2rem;
+  background-color: $accent-color;
+  border-radius: 4px;
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.3s;
+  &::after{
+    content: "";
+    position: absolute;
+    top: 100%;
+    right: 16px;
+    width: 10px;
+    height: calc(10px / 2 * tan(60deg));
+    clip-path: polygon(0 0, 100% 0, 50% 100%); /* 頂点の順序を調整 */
+    background-color: $accent-color;
+  }
+  .popup-content{
+    display: grid;
+    grid-template-columns: 1fr 25px 25px;
+    gap: 8px;
+    align-items: center;
+    &:not(:last-child) {
+      margin-bottom: 8px;
+    }
+    button {
+      display: flex;
+      width: 100%;
+      padding: 4px;
+      align-items: center;
+      justify-content: center;
+      &#confirm-button {
+        background-color: #e6ffea;
+      }
+      &#cancel-button {
+        background-color: #ffe6e6
+      }
+    }
+  }
+}
+#copy-popup{
+  padding: 15px 8px;
+  &::after{
+    right: 115px;
+  }
+  .popup-content{
+    grid-template-columns: 1fr;
+  }
+}
+#confirm-popup{
+  padding: 11.5px 8px;
+  &::after{
+    right: 65px;
+  }
+}
+#setting-popup{
+  .popup-content{
+    grid-template-columns: 1fr max-content;
+  }
+  .color-setting{
+    display: grid;
+    grid-template-columns: 1fr max-content;
+    gap: 8px;
+    align-items: center;
+    .selected-color{
+      color: $contents-color;
+    }
+    #color-picker{
+      width: 27px;
+    }
+  }
+  .background-setting{
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    &::after {
+      content: '';
+      position: absolute;
+      right: 8px;
+      width: 10px;
+      height: 7px;
+      background-color: $accent-color;
+      clip-path: polygon(0 0, 100% 0, 50% 100%);
+      pointer-events: none;
+    }
+    select {
+      min-width: 86px;
+      height: 27px;
+      padding: 4px 24px 4px 8px;
+      color: $font-color;
+      font-size: 1em;
+      background-color: $contents-color;
+      border: 1px solid #d0d0d0;
+      border-radius: 3px;
+      cursor: pointer;
+      appearance: none;
+    }
+  }
+}
+
+.controller-item {
+  &:not(:last-child) {
+    margin-bottom: 12px;
+  }
+
+  .input-group{
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    input[type="text"] {
+      width: calc(100% - 20px);
+      padding: 12px;
+      color: #555555;
+      font-size: 1.4rem;
+      font-weight: bold;
+      border: none;
+      border-radius: 4px;
+      background-color: $contents-color;
+      &:focus {
+        outline: none;
+        box-shadow: 0 0 0 2px $accent-color;
+      }
+      &::placeholder {
+        color: $base-color;
+      }
+    }
+    #add-button{
+      position: absolute;
+      top: 50%;
+      right: 4px;
+      padding: 8px 10px;
+      transform: translateY(-50%);
+      border: none;
+      border-left: 2px solid $base-color;
+      background-color: $contents-color;
+      cursor: pointer;
+      i{
+        font-size: 1.2rem;
+      }
+    }
+  }
+
+  &.list-area {
+    padding: 12px;
+    background-color: $contents-color;
+    border-radius: 4px;
+    .item_list_section{
+      &:not(:last-child) {
+        margin-bottom: 12px;
+      }
+    }
+  }
+  .list-section{
+    &:not(:last-child) {
+      margin-bottom: 12px;
+    }
+    h2{
+      padding-bottom: 4px;
+      margin-bottom: 4px;
+      color: $base-color;
+      font-size: 1.4rem;
+      font-weight: bold;
+      border-bottom: 2px solid $base-color;
+    }
+    p{
+      color: $font-color;
+      font-size: 1.4rem;
+      font-weight: bold;
+    }
+    ol{
+      height: calc(235px - 16px);
+      padding: 0;
+      margin: 0;
+      border-radius: 4px;
+      overflow-y: scroll;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+    li{
+      color: $font-color;
+      font-size: 1.4rem;
+      font-weight: bold;
+      line-height: 1.5em;
+      list-style: none;
+    }
+    .singing-title-group{
+      display: grid;
+      grid-template-columns: 1fr max-content;
+      gap: 8px;
+      align-items: center;
+    }
+    #singing-title-clear-button{
+      background-color: $contents-color;
+    }
+  }
+
+  .controller-button-group{
+    position: relative;
+    display: flex;
+    justify-content: end;
+    gap: 8px;
+    #setting-button{
+      padding: 12px;
+    }
+  }
+}
+
+
+
+#view{
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 320px;
+  padding: 8px 16px 16px;
+  background-color: rgba(0, 0, 0, 0.3);
+  .streaming-info{
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    gap: 16px;
+    align-items: end;
+  }
+  .clock-layout{
+    display: inline-block;
+    text-align: center;
+    #clock-time{
+      margin-bottom: 4px;
+      color: $accent-color;
+      font-size: 3.2rem;
+      border-bottom: 1px solid $accent-color;
+    }
+    #clock-date{
+      color: $accent-color;
+      font-size: 1.4rem;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+  }
+  .account{
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    p{
+      color: $accent-color;
+      font-size: 1.4rem;
+      font-weight: bold;
+    }
+  }
+
+  h1{
+    padding-bottom: 4px;
+    margin-bottom: 4px;
+    color: $accent-color;
+    font-size: 1.4rem;
+    font-weight: bold;
+    border-bottom: 1px solid $accent-color;
+  }
+
+  .now-singing{
+    p{
+      color: $font-color;
+      font-size: 1.4rem;
+      font-weight: bold;
+      line-height: 1em;
+    }
+  }
+  
+  .set-list{
+    ol{
+      height: 320px;
+      padding: 0 0 8px;
+      margin: 0;
+      color: $font-color;
+      border-bottom: 1px solid $accent-color;
+      overflow-y: scroll;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+    li{
+      font-size: 1.4rem;
+      font-weight: bold;
+      line-height: 1.5em;
+      list-style: none;
+    }
+  }
+}

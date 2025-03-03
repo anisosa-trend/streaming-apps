@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="format-detection" content="telephone=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <title>Simple Setlist Management Tool - Controller</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kiwi+Maru&display=swap" rel="stylesheet">
+  </head>
+
+  <body>
+    <div id="main">
+      <div id="container">
+        <section id="controller">
+
+          <div class="controller-item input-area">
+            <div class="input-group">
+              <input type="text" id="song-title-input" placeholder="曲名を入力" aria-label="曲名を入力">
+              <button id="add-button" aria-label="曲を追加"><i class="fa-solid fa-plus"></i></button>
+            </div>
+          </div>
+
+          <div class="controller-item list-area">
+            <div class="list-section">
+              <h2 class="list-title">歌唱中の楽曲</h2>
+              <div class="singing-title-group">
+                <p id="singing-title">---</p>
+                <button id="singing-title-clear-button" aria-label="歌唱中の曲をクリア" data-button="tertiary"><i class="fa-solid fa-xmark"></i></button>
+              </div>
+            </div>
+
+            <div class="list-section">
+              <h2 class="list-title">セットリスト</h2>
+              <ol id="song-title-list"></ol>
+            </div>
+          </div>
+
+          <div class="controller-item button-area">
+            <div class="controller-button-group">
+              <button id="copy-button" class="controller-button" aria-label="セットリストをコピー" data-button="primary">
+                <i class="fa-solid fa-copy"></i>
+              </button>
+
+              <div id="copy-popup" class="controller-popup">
+                <div class="popup-content">
+                  <p>セットリストをコピーしました</p>
+                </div>
+              </div>
+
+              <button id="list-clear-button" class="controller-button" aria-label="セットリストをクリア" data-button="primary">
+                <i class="fa-regular fa-trash-can"></i>
+              </button>
+
+              <div id="confirm-popup" class="controller-popup">
+                <div class="popup-content">
+                  <p>本当にセットリストを削除しますか？</p>
+                  <button id="confirm-button" aria-label="削除を確定" data-button="secondary"><i class="fa-solid fa-check"></i></button>
+                  <button id="cancel-button" aria-label="削除をキャンセル" data-button="secondary"><i class="fa-solid fa-xmark"></i></button>
+                </div>
+              </div>
+
+              <button id="setting-button" class="controller-button" aria-label="設定" data-button="primary">
+                <i class="fa-solid fa-gear"></i>
+              </button>
+
+              <div id="setting-popup" class="controller-popup">
+                <div class="popup-content">
+                  <p>カラー設定</p>
+                  <div class="color-setting">
+                    <p id="selected-color">#555555</p>
+                    <input type="color" id="color-picker" value="#555555" aria-label="カラーピッカー">
+                  </div>
+                </div>
+
+                <div class="popup-content">
+                  <p>背景設定</p>
+                  <div class="background-setting">
+                    <select id="bg-color-select" aria-label="背景色選択">
+                      <option value="rgba(0, 0, 0, 0.3)" selected>黒</option>
+                      <option value="rgba(255, 255, 255, 0.3)">白</option>
+                      <option value="rgba(0, 0, 0, 0)">なし</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </section>
+      </div>
+    </div>
+
+    <script src="./js/utils/scroll.js"></script>
+    <script src="./js/utils/localStorage.js"></script>
+    <script src="./js/page-controller/main.js"></script>
+    <script src="./js/page-controller/popup.js"></script>
+    <script src="./js/page-controller/colorPicker.js"></script>
+  </body>
+</html>
