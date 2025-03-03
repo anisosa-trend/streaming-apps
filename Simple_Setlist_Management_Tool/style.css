@@ -144,7 +144,7 @@ i {
   align-items: center;
 }
 #setting-popup .color-setting .selected-color {
-  color: #f0f0e5;
+  color: #ffffff;
 }
 #setting-popup .color-setting #color-picker {
   width: 27px;
@@ -171,7 +171,7 @@ i {
   padding: 4px 24px 4px 8px;
   color: #555555;
   font-size: 1em;
-  background-color: #f0f0e5;
+  background-color: #ffffff;
   border: 1px solid #d0d0d0;
   border-radius: 3px;
   cursor: pointer;
@@ -197,7 +197,7 @@ i {
   font-weight: bold;
   border: none;
   border-radius: 4px;
-  background-color: #f0f0e5;
+  background-color: #ffffff;
 }
 .controller-item .input-group input[type=text]:focus {
   outline: none;
@@ -217,13 +217,15 @@ i {
   transform: translateY(-50%);
   border: none;
   border-left: 2px solid #c39e88;
+  background-color: #ffffff;
+  cursor: pointer;
 }
 .controller-item .input-group #add-button i {
   font-size: 1.2rem;
 }
 .controller-item.list-area {
   padding: 12px;
-  background-color: #f0f0e5;
+  background-color: #ffffff;
   border-radius: 4px;
 }
 .controller-item.list-area .item_list_section:not(:last-child) {
@@ -266,6 +268,9 @@ i {
   grid-template-columns: 1fr max-content;
   gap: 8px;
   align-items: center;
+}
+.controller-item .list-section #singing-title-clear-button {
+  background-color: #ffffff;
 }
 .controller-item .controller-button-group {
   position: relative;

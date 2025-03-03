@@ -212,6 +212,8 @@ i{
       transform: translateY(-50%);
       border: none;
       border-left: 2px solid $base-color;
+      background-color: $contents-color;
+      cursor: pointer;
       i{
         font-size: 1.2rem;
       }
@@ -266,6 +268,9 @@ i{
       grid-template-columns: 1fr max-content;
       gap: 8px;
       align-items: center;
+    }
+    #singing-title-clear-button{
+      background-color: $contents-color;
     }
   }
 
