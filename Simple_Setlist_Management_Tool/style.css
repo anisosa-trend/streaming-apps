@@ -288,7 +288,7 @@ i {
   gap: 16px;
   width: 320px;
   padding: 8px 16px 16px;
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(255, 255, 255, 0.5);
 }
 #view .streaming-info {
   display: grid;
