@@ -74,7 +74,6 @@ i{
 .controller-popup{
   position: absolute;
   bottom: 50px;
-  // right: -52px;
   width: calc(320px - 16px);
   padding: 10px 8px;
   color: #ffffff;
@@ -84,6 +83,7 @@ i{
   opacity: 0;
   visibility: hidden;
   transition: 0.3s;
+  z-index: 100;
   &::after{
     content: "";
     position: absolute;
@@ -255,6 +255,9 @@ i{
       overflow-y: scroll;
       scrollbar-width: none;
       -ms-overflow-style: none;
+      &::-webkit-scrollbar{
+        display:none;
+      }
     }
     li{
       color: $font-color;
@@ -355,6 +358,9 @@ i{
       overflow-y: scroll;
       scrollbar-width: none;
       -ms-overflow-style: none;
+      &::-webkit-scrollbar{
+        display:none;
+      }
     }
     li{
       font-size: 1.4rem;

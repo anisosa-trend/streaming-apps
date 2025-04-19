@@ -15,6 +15,8 @@ const popupController = (() => {
   const POPUP_OPACITY_VISIBLE = 1;
   const POPUP_OPACITY_HIDDEN = 0;
   const POPUP_COPY_TIMEOUT = 2000;
+  const POPUP_DISPLAY_NONE = "none";
+  const POPUP_DISPLAY_BLOCK = "block";
 
   // Check if a popup is currently displayed
   const isPopupVisible = (element) => {
@@ -23,6 +25,7 @@ const popupController = (() => {
 
   // Show or hide a popup
   const setPopupVisibility = (element, isVisible) => {
+    element.style.display = isVisible ? POPUP_DISPLAY_BLOCK : POPUP_DISPLAY_NONE;
     element.style.opacity = isVisible ? POPUP_OPACITY_VISIBLE : POPUP_OPACITY_HIDDEN;
     element.style.visibility = isVisible ? POPUP_DISPLAY_VISIBLE : POPUP_DISPLAY_HIDDEN;
   };

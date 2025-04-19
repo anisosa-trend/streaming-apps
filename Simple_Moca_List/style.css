@@ -82,6 +82,7 @@ i {
   opacity: 0;
   visibility: hidden;
   transition: 0.3s;
+  z-index: 100;
 }
 .controller-popup::after {
   content: "";
@@ -256,6 +257,9 @@ i {
   scrollbar-width: none;
   -ms-overflow-style: none;
 }
+.controller-item .list-section ol::-webkit-scrollbar {
+  display: none;
+}
 .controller-item .list-section li {
   color: #555555;
   font-size: 1.4rem;
@@ -345,6 +349,9 @@ i {
   overflow-y: scroll;
   scrollbar-width: none;
   -ms-overflow-style: none;
+}
+#view .set-list ol::-webkit-scrollbar {
+  display: none;
 }
 #view .set-list li {
   font-size: 1.4rem;
