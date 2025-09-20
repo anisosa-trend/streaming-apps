@@ -54,7 +54,12 @@ main#view {
     //   5px 5px 10px 0px rgba(0, 0, 0, 0.3);
   }
 
-  .song_info {
+  .song_info_layout {
+    display: grid;
+    grid-template-columns: 1fr max-content;
+    align-items: center;
+    gap: 6%;
+    flex-direction: row;
     margin-bottom: 6%;
     .song_title {
       margin-bottom: 1%;
@@ -66,6 +71,28 @@ main#view {
       color: var(--text-color);
       font-size: 4.4rem;
       font-weight: bold;
+    }
+    .song_buttons {
+      display: flex;
+      gap: 40px;
+      align-items: center;
+    }
+    .favorite_button,
+    .more_button {
+      i {
+        color: #fff;
+        font-size: 4rem;
+      }
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background-color: var(--accent-color);
+      box-shadow: -5px -5px 10px 0px rgba(255, 255, 255, 0.5),
+        5px 5px 10px 0px rgba(0, 0, 0, 0.3);
+      cursor: pointer;
     }
   }
 

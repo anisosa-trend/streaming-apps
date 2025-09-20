@@ -46,19 +46,46 @@ main#view .character_area {
   aspect-ratio: 1/1.2;
   border-radius: 24px;
 }
-main#view .song_info {
+main#view .song_info_layout {
+  display: grid;
+  grid-template-columns: 1fr max-content;
+  align-items: center;
+  gap: 6%;
+  flex-direction: row;
   margin-bottom: 6%;
 }
-main#view .song_info .song_title {
+main#view .song_info_layout .song_title {
   margin-bottom: 1%;
   color: var(--text-color-bold);
   font-size: 5.6rem;
   font-weight: bold;
 }
-main#view .song_info .song_artist {
+main#view .song_info_layout .song_artist {
   color: var(--text-color);
   font-size: 4.4rem;
   font-weight: bold;
+}
+main#view .song_info_layout .song_buttons {
+  display: flex;
+  gap: 40px;
+  align-items: center;
+}
+main#view .song_info_layout .favorite_button,
+main#view .song_info_layout .more_button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: var(--accent-color);
+  box-shadow: -5px -5px 10px 0px rgba(255, 255, 255, 0.5), 5px 5px 10px 0px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+}
+main#view .song_info_layout .favorite_button i,
+main#view .song_info_layout .more_button i {
+  color: #fff;
+  font-size: 4rem;
 }
 main#view .progress_bar {
   position: relative;
