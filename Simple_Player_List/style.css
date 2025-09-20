@@ -31,6 +31,14 @@ p {
     transform: translateX(-100%);
   }
 }
+@keyframes progress-animation {
+  0% {
+    width: 20%;
+  }
+  100% {
+    width: 80%;
+  }
+}
 :root {
   --main-color: #e8f7ff;
   --accent-color: #738fe2;
@@ -129,6 +137,7 @@ main#view .progress_bar .progress {
   height: 100%;
   background-color: var(--accent-color);
   border-radius: 16px;
+  animation: progress-animation 5s ease-in-out infinite alternate;
 }
 main#view .control_bar {
   display: flex;
