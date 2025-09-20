@@ -32,8 +32,13 @@
           <!-- 楽曲情報 -->
           <div class="song_info_layout">
             <div class="song_info">
-              <h2 class="song_title">The Cute!!!</h2>
-              <p class="song_artist">初星学園＆藤田ことね</p>
+              <div class="scroll_container">
+                <h2 class="scroll_item song_title">The Cute!!!</h2>
+              </div>
+
+              <div class="scroll_container">
+                <p class="scroll_item song_artist">初星学園＆藤田ことね</p>
+              </div>
             </div>
 
             <div class="song_buttons">
@@ -71,6 +76,24 @@
         </div>
       </div>
     </main>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        function checkAndApplyScroll() {
+          const scrollElements = document.querySelectorAll(".scroll_item");
+          scrollElements.forEach((element) => {
+            const container = element.parentElement;
+            if (element.scrollWidth > container.clientWidth) {
+              element.classList.add("is_scrolling");
+            } else {
+              element.classList.remove("is_scrolling");
+            }
+          });
+        }
+        checkAndApplyScroll();
+        window.addEventListener("resize", checkAndApplyScroll);
+      });
+    </script>
 
     <!-- <script src="./constants/userSettings.js"></script>
     <script src="./js/utils/scroll.js"></script>

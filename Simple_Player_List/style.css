@@ -20,6 +20,17 @@ p {
   margin: 0;
 }
 
+@keyframes scroll-animation {
+  0% {
+    transform: translateX(0);
+  }
+  20% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
 :root {
   --main-color: #e8f7ff;
   --accent-color: #738fe2;
@@ -53,6 +64,21 @@ main#view .song_info_layout {
   gap: 6%;
   flex-direction: row;
   margin-bottom: 6%;
+}
+main#view .song_info_layout .song_info {
+  min-width: 0;
+}
+main#view .song_info_layout .scroll_container {
+  width: 100%;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+main#view .song_info_layout .scroll_item {
+  display: inline-block;
+  white-space: nowrap;
+}
+main#view .song_info_layout .scroll_item.is_scrolling {
+  animation: scroll-animation 15s linear infinite;
 }
 main#view .song_info_layout .song_title {
   margin-bottom: 1%;

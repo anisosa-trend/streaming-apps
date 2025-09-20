@@ -21,6 +21,18 @@ p {
   margin: 0;
 }
 
+@keyframes scroll-animation {
+  0% {
+    transform: translateX(0);
+  }
+  20% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
 :root {
   --main-color: #e8f7ff;
   --accent-color: #738fe2;
@@ -61,6 +73,21 @@ main#view {
     gap: 6%;
     flex-direction: row;
     margin-bottom: 6%;
+    .song_info {
+      min-width: 0;
+    }
+    .scroll_container {
+      width: 100%;
+      overflow: hidden;
+      box-sizing: border-box;
+    }
+    .scroll_item {
+      display: inline-block;
+      white-space: nowrap;
+      &.is_scrolling {
+        animation: scroll-animation 15s linear infinite;
+      }
+    }
     .song_title {
       margin-bottom: 1%;
       color: var(--text-color-bold);
