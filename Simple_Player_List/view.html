@@ -22,61 +22,57 @@
   <body>
     <main id="view">
       <div id="container">
-        <div id="view">
-          <!-- 見出し -->
-          <h1>NOW SINGING</h1>
+        <!-- 立ち絵表示エリア -->
+        <div class="character_area"></div>
 
-          <!-- 立ち絵表示エリア -->
-          <div class="character_area"></div>
-
-          <!-- 楽曲情報 -->
-          <div class="song_info_layout">
-            <div class="song_info">
-              <div class="scroll_container">
-                <h2 class="scroll_item song_title">The Cute!!!</h2>
-              </div>
-
-              <div class="scroll_container">
-                <p class="scroll_item song_artist">初星学園＆藤田ことね</p>
-              </div>
+        <!-- 楽曲情報 -->
+        <div class="song_info_layout">
+          <div class="song_info">
+            <div class="scroll_container">
+              <h1 class="scroll_item song_title">The Cute!!!</h1>
             </div>
 
-            <div class="song_buttons">
-              <!-- お気に入りボタン -->
-              <div class="favorite_button">
-                <i class="fa-solid fa-star"></i>
-              </div>
-              <!-- 三点リーダー -->
-              <div class="more_button">
-                <i class="fa-solid fa-ellipsis"></i>
-              </div>
+            <div class="scroll_container">
+              <p class="scroll_item song_artist">初星学園＆藤田ことね</p>
             </div>
           </div>
 
-          <!-- 再生プログレスバー -->
-          <div class="progress_bar">
-            <div class="progress"></div>
+          <div class="song_buttons">
+            <!-- お気に入りボタン -->
+            <div class="favorite_button">
+              <i class="fa-solid fa-star"></i>
+            </div>
+            <!-- 三点リーダー -->
+            <div class="more_button">
+              <i class="fa-solid fa-ellipsis"></i>
+            </div>
           </div>
+        </div>
 
-          <!-- コントロールバー -->
-          <div class="control_bar">
-            <!-- 1曲前に戻る -->
-            <div class="control_button prev">
-              <i class="fa-solid fa-backward"></i>
-            </div>
-            <!-- 再生・一時停止 -->
-            <div class="control_button play">
-              <i class="fa-solid fa-pause"></i>
-            </div>
-            <!-- 1曲先に進む -->
-            <div class="control_button next">
-              <i class="fa-solid fa-forward"></i>
-            </div>
+        <!-- 再生プログレスバー -->
+        <div class="progress_bar">
+          <div class="progress"></div>
+        </div>
+
+        <!-- コントロールバー -->
+        <div class="control_bar">
+          <!-- 1曲前に戻る -->
+          <div class="control_button prev">
+            <i class="fa-solid fa-backward"></i>
+          </div>
+          <!-- 再生・一時停止 -->
+          <div class="control_button play">
+            <i class="fa-solid fa-pause"></i>
+          </div>
+          <!-- 1曲先に進む -->
+          <div class="control_button next">
+            <i class="fa-solid fa-forward"></i>
           </div>
         </div>
       </div>
     </main>
 
+    <script src="./js/clock.js"></script>
     <script>
       document.addEventListener("DOMContentLoaded", function () {
         function checkAndApplyScroll() {
@@ -94,11 +90,5 @@
         window.addEventListener("resize", checkAndApplyScroll);
       });
     </script>
-
-    <!-- <script src="./constants/userSettings.js"></script>
-    <script src="./js/utils/scroll.js"></script>
-    <script src="./js/utils/localStorage.js"></script>
-    <script src="./js/page-view/clock.js"></script>
-    <script src="./js/page-view/onload.js"></script> -->
   </body>
 </html>

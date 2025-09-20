@@ -6,6 +6,7 @@ html {
 }
 
 body {
+  margin: 0;
   font-size: 10px;
 }
 
@@ -47,22 +48,17 @@ p {
   --progress-bar-color: #e7ebf8;
 }
 
-main#view {
+main#view #container {
+  display: flex;
+  flex-direction: column;
   width: 100%;
+  min-height: 177.7777777778vw;
   padding: 6%;
   box-sizing: border-box;
-  aspect-ratio: 9/16;
-  border-radius: 40px;
-}
-main#view h1 {
-  margin-bottom: 6%;
-  color: var(--text-color-bold);
-  font-size: 5.6rem;
 }
 main#view .character_area {
+  flex: 1 1 auto;
   width: 100%;
-  margin-bottom: 6%;
-  aspect-ratio: 1/1.2;
   border-radius: 24px;
 }
 main#view .song_info_layout {
@@ -125,7 +121,6 @@ main#view .progress_bar {
   position: relative;
   width: 100%;
   height: 16px;
-  margin-bottom: 8%;
   border-radius: 16px;
   background-color: var(--progress-bar-color);
 }
@@ -144,6 +139,7 @@ main#view .control_bar {
   justify-content: center;
   align-items: center;
   gap: 10%;
+  margin-top: 8%;
 }
 main#view .control_bar i {
   color: #fff;
