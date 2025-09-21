@@ -200,4 +200,7 @@ main#view .option_layout .option_button {
 main#view .option_layout .option_button i {
   color: #fff;
   font-size: 4.8rem;
+}
+main#view .option_layout .plus_button input[type=file] {
+  display: none;
 }/*# sourceMappingURL=style.css.map */

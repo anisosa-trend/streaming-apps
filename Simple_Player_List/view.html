@@ -90,17 +90,18 @@
           <!-- オプション -->
           <div class="option_layout">
             <!-- 設定ボタン -->
-            <div class="option_button favorite_button">
+            <div class="option_button setting_button">
               <i class="fa-solid fa-sliders"></i>
             </div>
 
             <!-- セットリスト読み込みボタン -->
-            <div class="option_button more_button">
+            <div class="option_button plus_button">
               <i class="fa-solid fa-plus"></i>
+              <input type="file" id="fileInput" accept=".txt" />
             </div>
 
             <!-- セットリスト表示ボタン -->
-            <div class="option_button more_button">
+            <div class="option_button list_button">
               <i class="fa-solid fa-list-check"></i>
             </div>
           </div>
@@ -109,6 +110,9 @@
     </main>
 
     <script>
+      /** ====================================================================== */
+      /** 曲名が長いときにスクロールする処理 */
+      /** ====================================================================== */
       document.addEventListener("DOMContentLoaded", function () {
         function checkAndApplyScroll() {
           const scrollElements = document.querySelectorAll(".scroll_item");
@@ -123,6 +127,42 @@
         }
         checkAndApplyScroll();
         window.addEventListener("resize", checkAndApplyScroll);
+
+        /** ====================================================================== */
+        /** ローカルにあるセットリスト.txtを読み込む処理 */
+        /** ====================================================================== */
+        // plus_buttonクリックでファイル選択
+        document
+          .querySelector(".plus_button")
+          .addEventListener("click", function () {
+            document.getElementById("fileInput").click();
+          });
+
+        // ファイル選択後、内容を読み込む
+        document
+          .getElementById("fileInput")
+          .addEventListener("change", function (event) {
+            const file = event.target.files[0];
+            if (file) {
+              const reader = new FileReader();
+              reader.onload = function (e) {
+                const text = e.target.result;
+                // ここでtextの内容を[{title: string, artist: string},...}]の形式に変換する。
+                const songs = text.split("\n").map((line) => {
+                  const [title, artist] = line.split("@@");
+                  return {
+                    title: title.replace(/\r$/, ""),
+                    artist: artist ? artist.replace(/\r$/, "") : "",
+                  };
+                });
+                console.log(songs);
+
+                // songsをローカルストレージに保存する。
+                localStorage.setItem("songs", JSON.stringify(songs));
+              };
+              reader.readAsText(file, "UTF-8");
+            }
+          });
       });
     </script>
   </body>
