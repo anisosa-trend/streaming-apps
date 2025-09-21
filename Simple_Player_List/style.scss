@@ -130,9 +130,9 @@ main#view {
     border-radius: 16px;
     background-color: var(--progress-bar-color);
     .progress {
-      position: absolute;
-      top: 0;
-      left: 0;
+      // position: absolute;
+      // top: 0;
+      // left: 0;
       width: 60%;
       height: 100%;
       background-color: var(--accent-color);
@@ -145,7 +145,7 @@ main#view {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 10%;
+    gap: 15%;
     margin-top: 8%;
     i {
       color: #fff;
@@ -162,6 +162,33 @@ main#view {
       box-shadow: -5px -5px 10px 0px rgba(255, 255, 255, 0.5),
         5px 5px 10px 0px rgba(0, 0, 0, 0.3);
       cursor: pointer;
+    }
+  }
+
+  .volume_bar_layout {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 4%;
+    margin-top: 8%;
+    .volume_button {
+      i {
+        color: var(--accent-color);
+        font-size: 4rem;
+      }
+    }
+    .volume_bar {
+      position: relative;
+      width: 100%;
+      height: 16px;
+      border-radius: 16px;
+      background-color: var(--progress-bar-color);
+      .volume {
+        width: 80%;
+        height: 100%;
+        background-color: var(--accent-color);
+        border-radius: 16px;
+      }
     }
   }
 }
