@@ -14,7 +14,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Kiwi+Maru&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@300;400;500;700;900&display=swap"
       rel="stylesheet"
     />
   </head>
@@ -25,87 +25,89 @@
         <!-- 立ち絵表示エリア -->
         <div class="character_area"></div>
 
-        <!-- 楽曲情報 -->
-        <div class="song_info_layout">
-          <div class="song_info">
-            <div class="scroll_container">
-              <h1 class="scroll_item song_title">The Cute!!!</h1>
+        <div class="player_area">
+          <!-- 楽曲情報 -->
+          <div class="song_info_layout">
+            <div class="song_info">
+              <div class="scroll_container">
+                <h1 class="scroll_item song_title">The Cute!!!</h1>
+              </div>
+
+              <div class="scroll_container">
+                <p class="scroll_item song_artist">初星学園＆藤田ことね</p>
+              </div>
             </div>
 
-            <div class="scroll_container">
-              <p class="scroll_item song_artist">初星学園＆藤田ことね</p>
+            <div class="song_buttons">
+              <!-- お気に入りボタン -->
+              <div class="favorite_button">
+                <!-- <i class="fa-solid fa-star"></i> -->
+                <i class="fa-regular fa-star"></i>
+              </div>
+              <!-- 三点リーダー -->
+              <div class="more_button">
+                <i class="fa-solid fa-ellipsis"></i>
+              </div>
             </div>
           </div>
 
-          <div class="song_buttons">
-            <!-- お気に入りボタン -->
-            <div class="favorite_button">
-              <i class="fa-solid fa-star"></i>
+          <!-- 再生プログレスバー -->
+          <div class="progress_bar">
+            <div class="progress"></div>
+          </div>
+
+          <!-- コントロールバー -->
+          <div class="control_bar">
+            <!-- 1曲前に戻る -->
+            <div class="control_button prev">
+              <i class="fa-solid fa-backward"></i>
             </div>
-            <!-- 三点リーダー -->
-            <div class="more_button">
-              <i class="fa-solid fa-ellipsis"></i>
+            <!-- 再生・一時停止 -->
+            <div class="control_button play">
+              <i class="fa-solid fa-pause"></i>
+            </div>
+            <!-- 1曲先に進む -->
+            <div class="control_button next">
+              <i class="fa-solid fa-forward"></i>
             </div>
           </div>
-        </div>
 
-        <!-- 再生プログレスバー -->
-        <div class="progress_bar">
-          <div class="progress"></div>
-        </div>
+          <!-- ボリューム -->
+          <div class="volume_bar_layout">
+            <div class="volume_button mute">
+              <i class="fa-solid fa-volume-off"></i>
+            </div>
 
-        <!-- コントロールバー -->
-        <div class="control_bar">
-          <!-- 1曲前に戻る -->
-          <div class="control_button prev">
-            <i class="fa-solid fa-backward"></i>
-          </div>
-          <!-- 再生・一時停止 -->
-          <div class="control_button play">
-            <i class="fa-solid fa-pause"></i>
-          </div>
-          <!-- 1曲先に進む -->
-          <div class="control_button next">
-            <i class="fa-solid fa-forward"></i>
-          </div>
-        </div>
+            <div class="volume_bar">
+              <div class="volume"></div>
+            </div>
 
-        <!-- ボリューム -->
-        <div class="volume_bar_layout">
-          <div class="volume_button mute">
-            <i class="fa-solid fa-volume-off"></i>
+            <div class="volume_button max">
+              <i class="fa-solid fa-volume-high"></i>
+            </div>
           </div>
 
-          <div class="volume_bar">
-            <div class="volume"></div>
-          </div>
+          <!-- オプション -->
+          <div class="option_layout">
+            <!-- 設定ボタン -->
+            <div class="option_button favorite_button">
+              <i class="fa-solid fa-sliders"></i>
+            </div>
 
-          <div class="volume_button max">
-            <i class="fa-solid fa-volume-high"></i>
-          </div>
-        </div>
+            <!-- セットリスト読み込みボタン -->
+            <div class="option_button more_button">
+              <i class="fa-solid fa-plus"></i>
+            </div>
 
-        <!-- オプション -->
-        <div class="option_layout">
-          <!-- 設定ボタン -->
-          <div class="option_button favorite_button">
-            <i class="fa-solid fa-sliders"></i>
-          </div>
-
-          <!-- セットリスト読み込みボタン -->
-          <div class="option_button more_button">
-            <i class="fa-solid fa-plus"></i>
-          </div>
-
-          <!-- セットリスト表示ボタン -->
-          <div class="option_button more_button">
-            <i class="fa-solid fa-list-check"></i>
+            <!-- セットリスト表示ボタン -->
+            <div class="option_button more_button">
+              <i class="fa-solid fa-list-check"></i>
+            </div>
           </div>
         </div>
       </div>
     </main>
 
-    <script src="./js/clock.js"></script>
     <script>
       document.addEventListener("DOMContentLoaded", function () {
         function checkAndApplyScroll() {

@@ -1,5 +1,5 @@
 html {
-  font-family: "Kiwi Maru", serif;
+  font-family: "Zen Maru Gothic", sans-serif;
   font-size: 10px;
   font-weight: 400;
   font-style: normal;
@@ -53,13 +53,16 @@ main#view #container {
   flex-direction: column;
   width: 100%;
   min-height: 177.7777777778vw;
-  padding: 6%;
   box-sizing: border-box;
 }
 main#view .character_area {
   flex: 1 1 auto;
   width: 100%;
   border-radius: 24px;
+}
+main#view .player_area {
+  padding: 6%;
+  background-color: rgb(232, 247, 255);
 }
 main#view .song_info_layout {
   display: grid;
@@ -85,15 +88,14 @@ main#view .song_info_layout .scroll_item.is_scrolling {
   animation: scroll-animation 15s linear infinite;
 }
 main#view .song_info_layout .song_title {
-  margin-bottom: 1%;
   color: var(--text-color-bold);
-  font-size: 5.6rem;
-  font-weight: bold;
+  font-size: 6.3rem;
+  font-weight: 900;
 }
 main#view .song_info_layout .song_artist {
   color: var(--text-color);
   font-size: 4.4rem;
-  font-weight: bold;
+  font-weight: 700;
 }
 main#view .song_info_layout .song_buttons {
   display: flex;
