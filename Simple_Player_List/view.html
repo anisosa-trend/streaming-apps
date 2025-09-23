@@ -33,21 +33,21 @@
             <div class="setting_item item_checkbox">
               <p>プレイヤーボタン</p>
               <label class="toggle_button">
-                <input type="checkbox" checked/>
+                <input type="checkbox" id="is-display-player" checked/>
               </label>
             </div>
 
             <div class="setting_item item_checkbox">
               <p>音声バー</p>
               <label class="toggle_button">
-                <input type="checkbox" checked/>
+                <input type="checkbox" id="is-display-volume" checked/>
               </label>
             </div>
 
             <div class="setting_item item_checkbox">
               <p>オプションボタン</p>
               <label class="toggle_button">
-                <input type="checkbox" checked/>
+                <input type="checkbox" id="is-display-option" checked/>
               </label>
             </div>
           </div>
@@ -60,12 +60,12 @@
             
             <div class="setting_item item_slider">
               <p>フレーム</p>
-              <input type="range" class="input-range" name="foo" min="0" max="10">
+              <input type="range" id="input-range-frame" min="0" max="10" value="10">
             </div>
 
             <div class="setting_item item_slider">
               <p>コントローラー</p>
-              <input type="range" class="input-range" name="foo" min="0" max="10">
+              <input type="range" id="input-range-controller" min="0" max="10" value="10">
             </div>
           </div>
         </div>
@@ -137,7 +137,7 @@
           </div>
 
           <!-- コントロールバー -->
-          <div class="control_bar">
+          <div id="control-bar">
             <!-- 1曲前に戻る -->
             <div class="control_button prev">
               <i class="fa-solid fa-backward"></i>
@@ -153,7 +153,7 @@
           </div>
 
           <!-- ボリューム -->
-          <div class="volume_bar_layout">
+          <div id="volume-bar-layout">
             <div class="volume_button mute">
               <i class="fa-solid fa-volume-off"></i>
             </div>
@@ -168,7 +168,7 @@
           </div>
 
           <!-- オプション -->
-          <div class="option_layout">
+          <div id="option-layout">
             <!-- 設定ボタン -->
             <div class="option_button setting_button">
               <i class="fa-solid fa-sliders"></i>
@@ -307,6 +307,116 @@
               setListArea.style.visibility = "visible";
             }
           });
+
+        /** ====================================================================== */
+        /** 表示設定の保存・読み込みと表示切替 */
+        /** ====================================================================== */
+        function setupVisibilityToggle(checkboxId, elementSelector, storageKey) {
+          const checkbox = document.getElementById(checkboxId);
+          const element = document.querySelector(elementSelector);
+
+          // HTML要素が見つからない場合はエラーを出力して終了
+          if (!checkbox || !element) {
+            console.error("表示切替用の要素が見つかりません:", { checkboxId, elementSelector });
+            return;
+          }
+
+          // 表示状態を更新する関数
+          function updateVisibility() {
+            if (checkbox.checked) {
+              element.style.display = ''; // 元の表示スタイルに戻す
+            } else {
+              element.style.display = 'none'; // 非表示にする
+            }
+          }
+
+          // 1. ページ読み込み時にlocalStorageから設定を復元
+          const savedValue = localStorage.getItem(storageKey);
+          if (savedValue !== null) {
+            checkbox.checked = savedValue === 'true';
+          }
+
+          // 2. 初期表示状態を更新
+          updateVisibility();
+
+          // 3. チェックボックスの変更を監視して、設定を保存し表示を更新
+          checkbox.addEventListener('change', function() {
+            localStorage.setItem(storageKey, this.checked);
+            updateVisibility();
+          });
+        }
+
+        // 各設定項目に対して、上記関数を実行
+        setupVisibilityToggle('is-display-player', '#control-bar', 'isDisplayPlayer');
+        setupVisibilityToggle('is-display-volume', '#volume-bar-layout', 'isDisplayVolume');
+        setupVisibilityToggle('is-display-option', '#option-layout', 'isDisplayOption');
+
+        /** ====================================================================== */
+        /** 透過設定の保存・読み込みと反映 */
+        /** ====================================================================== */
+        function setupOpacitySlider(sliderId, elementSelector, storageKey, baseColorRgb, targetProperty) {
+          const slider = document.getElementById(sliderId);
+          const element = document.querySelector(elementSelector);
+
+          if (!slider || !element) {
+            console.error("透過設定用の要素が見つかりません:", { sliderId, elementSelector });
+            return;
+          }
+
+          // 透過度を更新する関数
+          function updateOpacity() {
+            const opacity = slider.value / 10; // スライダーの値(0-10)を透過度(0.0-1.0)に変換
+            element.style[targetProperty] = `rgba(${baseColorRgb}, ${opacity})`;
+          }
+
+          // 1. ページ読み込み時にlocalStorageから設定を復元
+          const savedValue = localStorage.getItem(storageKey);
+          if (savedValue !== null) {
+            slider.value = savedValue;
+          }
+
+          // 2. 初期値を反映
+          updateOpacity();
+
+          // 3. スライダーの値が変更されたら、設定を保存し表示を更新
+          slider.addEventListener('input', function() {
+            localStorage.setItem(storageKey, this.value);
+            updateOpacity();
+          });
+        }
+
+        /**
+         * CSS変数の値（例: #e8f7ff）を取得し、"R, G, B"形式の文字列に変換する関数
+         * @param {string} cssVariable - CSS変数名 (例: '--main-color')
+         * @returns {string} - "R, G, B" 形式の文字列 (例: "232, 247, 255")
+         */
+        function getRgbFromCssVar(cssVariable) {
+          // CSS変数の値を取得
+          const colorValue = getComputedStyle(document.documentElement).getPropertyValue(cssVariable).trim();
+          
+          // ブラウザに色計算をさせるため、一時的な要素を作成
+          const tempElem = document.createElement('div');
+          tempElem.style.color = colorValue;
+          document.body.appendChild(tempElem);
+          
+          // 計算済みの 'rgb(r, g, b)' 形式の値を取得
+          const computedColor = getComputedStyle(tempElem).color;
+          
+          // 一時的な要素をDOMから削除
+          document.body.removeChild(tempElem);
+          
+          // "rgb(r, g, b)" の文字列から数値部分 "r, g, b" のみを抽出して返す
+          return computedColor.match(/\d+/g).join(', ');
+        }
+
+        // '--main-color' の値を動的に取得
+        const mainBaseColorRgb = getRgbFromCssVar('--main-color');
+
+        // フレームのボーダー透過度に適用
+        setupOpacitySlider('input-range-frame', '#character-area', 'frameOpacityValue', mainBaseColorRgb, 'borderColor');
+
+        // コントローラー（プレイヤーエリア）の背景透過度に適用
+        setupOpacitySlider('input-range-controller', '#player-area', 'controllerOpacityValue', mainBaseColorRgb, 'backgroundColor');
       });
     </script>
   </body>

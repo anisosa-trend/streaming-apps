@@ -267,18 +267,18 @@ main#view .progress_bar .progress {
   border-radius: 16px;
   animation: progress-animation 5s ease-in-out infinite alternate;
 }
-main#view .control_bar {
+main#view #control-bar {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 15%;
   margin-top: 8%;
 }
-main#view .control_bar i {
+main#view #control-bar i {
   color: #fff;
   font-size: 6.4rem;
 }
-main#view .control_bar .control_button {
+main#view #control-bar .control_button {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -289,38 +289,38 @@ main#view .control_bar .control_button {
   box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.3);
   cursor: pointer;
 }
-main#view .volume_bar_layout {
+main#view #volume-bar-layout {
   display: flex;
   flex-direction: row;
   align-items: center;
   gap: 4%;
   margin-top: 6%;
 }
-main#view .volume_bar_layout .volume_button i {
+main#view #volume-bar-layout .volume_button i {
   color: var(--accent-color);
   font-size: 4rem;
 }
-main#view .volume_bar_layout .volume_bar {
+main#view #volume-bar-layout .volume_bar {
   position: relative;
   width: 100%;
   height: 16px;
   border-radius: 16px;
   background-color: var(--progress-bar-color);
 }
-main#view .volume_bar_layout .volume_bar .volume {
+main#view #volume-bar-layout .volume_bar .volume {
   width: 80%;
   height: 100%;
   background-color: var(--accent-color);
   border-radius: 16px;
 }
-main#view .option_layout {
+main#view #option-layout {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 24%;
   margin-top: 6%;
 }
-main#view .option_layout .option_button {
+main#view #option-layout .option_button {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -331,10 +331,10 @@ main#view .option_layout .option_button {
   box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.3);
   cursor: pointer;
 }
-main#view .option_layout .option_button i {
+main#view #option-layout .option_button i {
   color: #fff;
   font-size: 4.8rem;
 }
-main#view .option_layout .plus_button input[type=file] {
+main#view #option-layout .plus_button input[type=file] {
   display: none;
 }/*# sourceMappingURL=style.css.map */

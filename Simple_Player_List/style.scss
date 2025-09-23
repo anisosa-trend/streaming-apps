@@ -283,7 +283,7 @@ main#view {
     }
   }
 
-  .control_bar {
+  #control-bar {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -306,7 +306,7 @@ main#view {
     }
   }
 
-  .volume_bar_layout {
+  #volume-bar-layout {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -333,7 +333,7 @@ main#view {
     }
   }
 
-  .option_layout {
+  #option-layout {
     display: flex;
     align-items: center;
     justify-content: center;
