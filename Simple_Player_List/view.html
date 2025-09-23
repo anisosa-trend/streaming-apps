@@ -23,10 +23,39 @@
     <main id="view">
       <div id="container">
         <!-- 立ち絵表示エリア -->
-        <div class="character_area"></div>
-
-        <!-- セットリスト表示エリア -->
-        <div class="set_list_area">セットリスト</div>
+        <div class="character_area">
+          <!-- セットリスト表示エリア -->
+          <div class="set_list_area">
+            <div id="set-list" class="set_list">
+              <ol>
+                <li>Fighting My Way</li>
+                <li>Luna say maybe</li>
+                <li>世界一可愛い私</li>
+                <li>Fluorite</li>
+                <li>白線</li>
+                <li>Wonder Scale</li>
+                <li>Fighting My Way</li>
+                <li>Luna say maybe</li>
+                <li>世界一可愛い私</li>
+                <li>Fluorite</li>
+                <li>白線</li>
+                <li>Wonder Scale</li>
+                <li>Fighting My Way</li>
+                <li>Luna say maybe</li>
+                <li>世界一可愛い私</li>
+                <li>Fluorite</li>
+                <li>白線</li>
+                <li>Wonder Scale</li>
+                <li>Fighting My Way</li>
+                <li>Luna say maybe</li>
+                <li>世界一可愛い私</li>
+                <li>Fluorite</li>
+                <li>白線</li>
+                <li>Wonder Scale</li>
+              </ol>
+            </div>
+          </div>
+        </div>
 
         <div class="player_area">
           <!-- 楽曲情報 -->
@@ -113,10 +142,10 @@
     </main>
 
     <script>
-      /** ====================================================================== */
-      /** 曲名が長いときにスクロールする処理 */
-      /** ====================================================================== */
       document.addEventListener("DOMContentLoaded", function () {
+        /** ====================================================================== */
+        /** 曲名が長いときにスクロールする処理 */
+        /** ====================================================================== */
         function checkAndApplyScroll() {
           const scrollElements = document.querySelectorAll(".scroll_item");
           scrollElements.forEach((element) => {
@@ -132,7 +161,7 @@
         window.addEventListener("resize", checkAndApplyScroll);
 
         /** ====================================================================== */
-        /** ローカルにあるセットリスト.txtを読み込む処理 */
+        /** ローカルにあるセットリスト.txtを読み込みLocalStorageに保存する処理 */
         /** ====================================================================== */
         // .plus_buttonクリックでファイル選択
         document
@@ -168,7 +197,7 @@
           });
 
         /** ====================================================================== */
-        /** ローカルストレージにあるセットリストを表示する処理 */
+        /** セットリストを表示する処理 */
         /** ====================================================================== */
         // .list_buttonクリックで.set_list_areaを表示する
         document
@@ -183,6 +212,27 @@
               setListArea.style.visibility = "visible";
             }
           });
+
+        /** ====================================================================== */
+        /** ローカルストレージにある歌唱済み曲のセットリストを表示する処理 */
+        /** ====================================================================== */
+        // const songs = JSON.parse(localStorage.getItem("songs"));
+        // if (songs) {
+        //   // 初期化
+        //   const setList = document.getElementById("set-list");
+        //   setList.innerHTML = ""; // 既存のリストをクリア
+
+        //   // リストを作成する
+        //   const ol = document.createElement("ol");
+        //   songs.forEach((song) => {
+        //     const li = document.createElement("li");
+        //     li.textContent = song.title;
+        //     ol.appendChild(li);
+        //   });
+
+        //   // リストをセットリストに追加
+        //   setList.appendChild(ol);
+        // }
       });
     </script>
   </body>

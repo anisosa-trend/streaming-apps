@@ -45,11 +45,11 @@ p {
   --accent-color: #738fe2;
   --text-color-bold: #738fe2;
   --text-color: #b4c0c7;
+  --set-list-text-color: #000;
   --progress-bar-color: #e7ebf8;
 }
 
 main#view #container {
-  position: relative;
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -57,26 +57,38 @@ main#view #container {
   box-sizing: border-box;
 }
 main#view .character_area {
+  position: relative;
   flex: 1 1 auto;
   width: 100%;
-  border: 64px solid rgb(232, 247, 255);
+  border: 64px solid var(--main-color);
   border-bottom: none;
   box-sizing: border-box;
 }
-main#view .set_list_area {
+main#view .character_area .set_list_area {
   position: absolute;
-  top: 8%;
-  left: 0;
-  color: var(--text-color-bold);
-  font-size: 4rem;
+  top: 20px;
+  left: 32px;
+  width: 33%;
+  height: calc(100% - 40px);
+  color: var(--set-list-text-color);
+  font-size: 3.2rem;
   font-weight: 900;
   opacity: 0;
   visibility: hidden;
   transition: 0.3s;
+  overflow-y: scroll;
+}
+main#view .character_area .set_list_area::-webkit-scrollbar {
+  display: none;
+}
+main#view .character_area .set_list_area ol {
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 main#view .player_area {
   padding: 40px 64px 64px;
-  background-color: rgb(232, 247, 255);
+  background-color: var(--main-color);
 }
 main#view .song_info_layout {
   display: grid;

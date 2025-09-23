@@ -48,41 +48,53 @@ p {
   --accent-color: #738fe2;
   --text-color-bold: #738fe2;
   --text-color: #b4c0c7;
+  --set-list-text-color: #000;
   --progress-bar-color: #e7ebf8;
 }
 
 main#view {
   #container {
-    position: relative;
     display: flex;
     flex-direction: column;
     width: 100%;
     min-height: calc(100vw * 16 / 9);
     box-sizing: border-box;
   }
+
   .character_area {
+    position: relative;
     flex: 1 1 auto;
     width: 100%;
-    border: 64px solid rgb(232, 247, 255);
+    border: 64px solid var(--main-color);
     border-bottom: none;
     box-sizing: border-box;
-  }
-
-  .set_list_area {
-    position: absolute;
-    top: 8%;
-    left: 0;
-    color: var(--text-color-bold);
-    font-size: 4rem;
-    font-weight: 900;
-    opacity: 0;
-    visibility: hidden;
-    transition: 0.3s;
+    .set_list_area {
+      position: absolute;
+      top: 20px;
+      left: 32px;
+      width: 33%;
+      height: calc(100% - 40px);
+      color: var(--set-list-text-color);
+      font-size: 3.2rem;
+      font-weight: 900;
+      opacity: 0;
+      visibility: hidden;
+      transition: 0.3s;
+      overflow-y: scroll;
+      &::-webkit-scrollbar {
+        display: none;
+      }
+      ol {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+    }
   }
 
   .player_area {
     padding: 40px 64px 64px;
-    background-color: rgba(232, 247, 255, 1);
+    background-color: var(--main-color);
   }
 
   .song_info_layout {
@@ -148,9 +160,6 @@ main#view {
     border-radius: 16px;
     background-color: var(--progress-bar-color);
     .progress {
-      // position: absolute;
-      // top: 0;
-      // left: 0;
       width: 60%;
       height: 100%;
       background-color: var(--accent-color);
