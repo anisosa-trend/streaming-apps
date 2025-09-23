@@ -237,8 +237,21 @@
                 });
                 console.log(songs);
 
-                // songsをローカルストレージに保存する。
-                localStorage.setItem("songs", JSON.stringify(songs));
+                // songsを以下の形式でローカルストレージに保存する。
+                // type Song = {
+                //   title: string;
+                //   artist: string;
+                // }
+                // type SetList = {
+                //   beforeSinging: Song[];
+                //   nowSinging: Song[];
+                //   afterSinging: Song[];
+                // }
+                localStorage.setItem("setList", JSON.stringify({
+                  beforeSinging: songs,
+                  nowSinging: [],
+                  afterSinging: [],
+                }));
               };
               reader.readAsText(file, "UTF-8");
             }
