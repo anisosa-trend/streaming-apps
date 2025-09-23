@@ -53,6 +53,7 @@ p {
 
 main#view {
   #container {
+    position: relative;
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -62,11 +63,25 @@ main#view {
   .character_area {
     flex: 1 1 auto;
     width: 100%;
-    border-radius: 24px;
+    border: 64px solid rgb(232, 247, 255);
+    border-bottom: none;
+    box-sizing: border-box;
+  }
+
+  .set_list_area {
+    position: absolute;
+    top: 8%;
+    left: 0;
+    color: var(--text-color-bold);
+    font-size: 4rem;
+    font-weight: 900;
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.3s;
   }
 
   .player_area {
-    padding: 6%;
+    padding: 40px 64px 64px;
     background-color: rgba(232, 247, 255, 1);
   }
 
@@ -94,7 +109,7 @@ main#view {
     }
     .song_title {
       color: var(--text-color-bold);
-      font-size: 6.3rem;
+      font-size: 6.4rem;
       font-weight: 900;
     }
     .song_artist {

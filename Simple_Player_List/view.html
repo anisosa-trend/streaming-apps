@@ -25,6 +25,9 @@
         <!-- 立ち絵表示エリア -->
         <div class="character_area"></div>
 
+        <!-- セットリスト表示エリア -->
+        <div class="set_list_area">セットリスト</div>
+
         <div class="player_area">
           <!-- 楽曲情報 -->
           <div class="song_info_layout">
@@ -131,7 +134,7 @@
         /** ====================================================================== */
         /** ローカルにあるセットリスト.txtを読み込む処理 */
         /** ====================================================================== */
-        // plus_buttonクリックでファイル選択
+        // .plus_buttonクリックでファイル選択
         document
           .querySelector(".plus_button")
           .addEventListener("click", function () {
@@ -161,6 +164,23 @@
                 localStorage.setItem("songs", JSON.stringify(songs));
               };
               reader.readAsText(file, "UTF-8");
+            }
+          });
+
+        /** ====================================================================== */
+        /** ローカルストレージにあるセットリストを表示する処理 */
+        /** ====================================================================== */
+        // .list_buttonクリックで.set_list_areaを表示する
+        document
+          .querySelector(".list_button")
+          .addEventListener("click", function () {
+            const setListArea = document.querySelector(".set_list_area");
+            if (setListArea.style.opacity === "1") {
+              setListArea.style.opacity = "0";
+              setListArea.style.visibility = "hidden";
+            } else {
+              setListArea.style.opacity = "1";
+              setListArea.style.visibility = "visible";
             }
           });
       });
