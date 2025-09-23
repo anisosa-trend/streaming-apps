@@ -295,18 +295,41 @@
         /** ====================================================================== */
         /** セッティングを表示する処理 */
         /** ====================================================================== */
-        document
-          .querySelector(".setting_button")
-          .addEventListener("click", function () {
-            const setListArea = document.querySelector("#setting-area");
-            if (setListArea.style.opacity === "1") {
-              setListArea.style.opacity = "0";
-              setListArea.style.visibility = "hidden";
-            } else {
-              setListArea.style.opacity = "1";
-              setListArea.style.visibility = "visible";
-            }
-          });
+        const settingsArea = document.querySelector("#setting-area");
+
+        // 設定パネルの表示・非表示を切り替える関数
+        function toggleSettingsPanel() {
+          const isVisible = settingsArea.style.opacity === "1";
+          settingsArea.style.opacity = isVisible ? "0" : "1";
+          settingsArea.style.visibility = isVisible ? "hidden" : "visible";
+        }
+
+        // 設定パネルを閉じる関数
+        function closeSettingsPanel() {
+          settingsArea.style.opacity = "0";
+          settingsArea.style.visibility = "hidden";
+        }
+
+        // ボタンクリックで表示・非表示を切り替え
+        document.querySelector(".setting_button").addEventListener("click", toggleSettingsPanel);
+
+        // キーボードショートカットの設定
+        document.addEventListener("keydown", function(event) {
+          // input要素での入力中はショートカットを無効化
+          if (event.target.tagName.toLowerCase() === 'input') {
+            return;
+          }
+
+          // 's'キーで表示・非表示を切り替え
+          if (event.key === 's') {
+            toggleSettingsPanel();
+          }
+
+          // 'Escape'キーで非表示にする
+          if (event.key === 'Escape') {
+            closeSettingsPanel();
+          }
+        });
 
         /** ====================================================================== */
         /** 表示設定の保存・読み込みと表示切替 */
