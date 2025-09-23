@@ -50,13 +50,62 @@ p {
 }
 
 main#view #container {
+  position: relative;
   display: flex;
   flex-direction: column;
   width: 100%;
   min-height: 177.7777777778vw;
   box-sizing: border-box;
 }
-main#view .character_area {
+main#view #setting-area {
+  position: absolute;
+  top: 128px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 256px);
+  padding: 24px 32px;
+  background-color: #fff;
+  border-radius: 16px;
+  box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.3s;
+  z-index: 100;
+}
+main#view #setting-area h2 {
+  margin-bottom: 16px;
+  color: var(--text-color-bold);
+  font-size: 4rem;
+  font-weight: 900;
+}
+main#view #setting-area .setting_layout {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+main#view #setting-area .setting_layout .setting_heading h3 {
+  color: var(--text-color-bold);
+  font-size: 4rem;
+  font-weight: 900;
+}
+main#view #setting-area .setting_layout .setting_heading p {
+  font-size: 3.2rem;
+  font-weight: 700;
+}
+main#view #setting-area .setting_layout .color_setting {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+main#view #setting-area .setting_layout .color_setting #color-picker {
+  width: 96px;
+  height: 56px;
+}
+main#view #setting-area .setting_layout .color_setting p {
+  font-size: 4rem;
+  font-weight: 900;
+}
+main#view #character-area {
   position: relative;
   flex: 1 1 auto;
   width: 100%;
@@ -64,7 +113,7 @@ main#view .character_area {
   border-bottom: none;
   box-sizing: border-box;
 }
-main#view .character_area .set_list_area {
+main#view #character-area .set_list_area {
   position: absolute;
   top: 20px;
   left: 32px;
@@ -78,15 +127,15 @@ main#view .character_area .set_list_area {
   transition: 0.3s;
   overflow-y: scroll;
 }
-main#view .character_area .set_list_area::-webkit-scrollbar {
+main#view #character-area .set_list_area::-webkit-scrollbar {
   display: none;
 }
-main#view .character_area .set_list_area ol {
+main#view #character-area .set_list_area ol {
   list-style: none;
   padding: 0;
   margin: 0;
 }
-main#view .player_area {
+main#view #player-area {
   padding: 40px 64px 64px;
   background-color: var(--main-color);
 }
@@ -137,7 +186,7 @@ main#view .song_info_layout .more_button {
   height: 80px;
   border-radius: 50%;
   background-color: var(--accent-color);
-  box-shadow: -5px -5px 10px 0px rgba(255, 255, 255, 0.5), 5px 5px 10px 0px rgba(0, 0, 0, 0.3);
+  box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.3);
   cursor: pointer;
 }
 main#view .song_info_layout .favorite_button i,
@@ -178,7 +227,7 @@ main#view .control_bar .control_button {
   height: 140px;
   border-radius: 50%;
   background-color: var(--accent-color);
-  box-shadow: -5px -5px 10px 0px rgba(255, 255, 255, 0.5), 5px 5px 10px 0px rgba(0, 0, 0, 0.3);
+  box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.3);
   cursor: pointer;
 }
 main#view .volume_bar_layout {
@@ -220,7 +269,7 @@ main#view .option_layout .option_button {
   height: 88px;
   border-radius: 50%;
   background-color: var(--accent-color);
-  box-shadow: -5px -5px 10px 0px rgba(255, 255, 255, 0.5), 5px 5px 10px 0px rgba(0, 0, 0, 0.3);
+  box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.3);
   cursor: pointer;
 }
 main#view .option_layout .option_button i {

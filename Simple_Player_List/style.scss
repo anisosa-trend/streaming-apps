@@ -54,6 +54,7 @@ p {
 
 main#view {
   #container {
+    position: relative;
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -61,7 +62,58 @@ main#view {
     box-sizing: border-box;
   }
 
-  .character_area {
+  #setting-area {
+    position: absolute;
+    top: 128px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100% - 128px * 2);
+    padding: 24px 32px;
+    background-color: #fff;
+    border-radius: 16px;
+    box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.3s;
+    z-index: 100;
+    h2 {
+      margin-bottom: 16px;
+      color: var(--text-color-bold);
+      font-size: 4rem;
+      font-weight: 900;
+    }
+    .setting_layout {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      .setting_heading {
+        h3 {
+          color: var(--text-color-bold);
+          font-size: 4rem;
+          font-weight: 900;
+        }
+        p {
+          font-size: 3.2rem;
+          font-weight: 700;
+        }
+      }
+      .color_setting {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        #color-picker {
+          width: 96px;
+          height: 56px;
+        }
+        p {
+          font-size: 4rem;
+          font-weight: 900;
+        }
+      }
+    }
+  }
+
+  #character-area {
     position: relative;
     flex: 1 1 auto;
     width: 100%;
@@ -92,7 +144,7 @@ main#view {
     }
   }
 
-  .player_area {
+  #player-area {
     padding: 40px 64px 64px;
     background-color: var(--main-color);
   }
@@ -147,8 +199,7 @@ main#view {
       height: 80px;
       border-radius: 50%;
       background-color: var(--accent-color);
-      box-shadow: -5px -5px 10px 0px rgba(255, 255, 255, 0.5),
-        5px 5px 10px 0px rgba(0, 0, 0, 0.3);
+      box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.3);
       cursor: pointer;
     }
   }
@@ -186,8 +237,7 @@ main#view {
       height: 140px;
       border-radius: 50%;
       background-color: var(--accent-color);
-      box-shadow: -5px -5px 10px 0px rgba(255, 255, 255, 0.5),
-        5px 5px 10px 0px rgba(0, 0, 0, 0.3);
+      box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.3);
       cursor: pointer;
     }
   }
@@ -237,8 +287,7 @@ main#view {
       height: 88px;
       border-radius: 50%;
       background-color: var(--accent-color);
-      box-shadow: -5px -5px 10px 0px rgba(255, 255, 255, 0.5),
-        5px 5px 10px 0px rgba(0, 0, 0, 0.3);
+      box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.3);
       cursor: pointer;
     }
     .plus_button {

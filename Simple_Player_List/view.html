@@ -22,8 +22,30 @@
   <body>
     <main id="view">
       <div id="container">
-        <!-- 立ち絵表示エリア -->
-        <div class="character_area">
+        <div id="setting-area">
+          <!-- <h2>設定</h2> -->
+          <!-- カラー設定 -->
+          <div class="setting_layout">
+            <div class="setting_heading">
+              <h3>カラー設定</h3>
+              <p>色を選択すると、自動で全体の色が調整されます。</p>
+            </div>
+            <div class="color_setting">
+              <input
+                type="color"
+                id="color-picker"
+                value="#555555"
+                aria-label="カラーピッカー"
+              />
+              <p id="selected-color">#555555</p>
+            </div>
+          </div>
+
+          <!-- プレイヤーボタンの表示・非表示 -->
+          <!-- 音声バー + オプションの表示・非表示 -->
+        </div>
+
+        <div id="character-area">
           <!-- セットリスト表示エリア -->
           <div class="set_list_area">
             <div id="set-list" class="set_list">
@@ -57,7 +79,7 @@
           </div>
         </div>
 
-        <div class="player_area">
+        <div id="player-area">
           <!-- 楽曲情報 -->
           <div class="song_info_layout">
             <div class="song_info">
@@ -199,7 +221,6 @@
         /** ====================================================================== */
         /** セットリストを表示する処理 */
         /** ====================================================================== */
-        // .list_buttonクリックで.set_list_areaを表示する
         document
           .querySelector(".list_button")
           .addEventListener("click", function () {
@@ -233,6 +254,33 @@
         //   // リストをセットリストに追加
         //   setList.appendChild(ol);
         // }
+
+        /** ====================================================================== */
+        /** セッティングを表示する処理 */
+        /** ====================================================================== */
+        document
+          .querySelector(".setting_button")
+          .addEventListener("click", function () {
+            const setListArea = document.querySelector("#setting-area");
+            if (setListArea.style.opacity === "1") {
+              setListArea.style.opacity = "0";
+              setListArea.style.visibility = "hidden";
+            } else {
+              setListArea.style.opacity = "1";
+              setListArea.style.visibility = "visible";
+            }
+          });
+
+        /** ====================================================================== */
+        /** 選択した色をLocalStorageに保存する処理 */
+        /** ====================================================================== */
+        const colorPicker = document.getElementById("color-picker");
+        const selectedColorText = document.getElementById("selected-color");
+        colorPicker.addEventListener("input", (event) => {
+          const selectedHexColor = event.target.value;
+          selectedColor.textContent = selectedHexColor;
+          localStorage.setItem("selectedColor", selectedHexColor);
+        });
       });
     </script>
   </body>
