@@ -62,6 +62,9 @@ main#view #setting-area {
   top: 128px;
   left: 50%;
   transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
   width: calc(100% - 256px);
   padding: 24px 32px;
   background-color: #fff;
@@ -72,38 +75,67 @@ main#view #setting-area {
   transition: 0.3s;
   z-index: 100;
 }
-main#view #setting-area h2 {
-  margin-bottom: 16px;
-  color: var(--text-color-bold);
-  font-size: 4rem;
-  font-weight: 900;
-}
 main#view #setting-area .setting_layout {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 32px;
 }
-main#view #setting-area .setting_layout .setting_heading h3 {
+main#view #setting-area .setting_layout .setting_heading h2 {
+  margin-bottom: 8px;
   color: var(--text-color-bold);
   font-size: 4rem;
   font-weight: 900;
 }
 main#view #setting-area .setting_layout .setting_heading p {
   font-size: 3.2rem;
-  font-weight: 700;
-}
-main#view #setting-area .setting_layout .color_setting {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
-main#view #setting-area .setting_layout .color_setting #color-picker {
-  width: 96px;
-  height: 56px;
-}
-main#view #setting-area .setting_layout .color_setting p {
-  font-size: 4rem;
   font-weight: 900;
+}
+main#view #setting-area .setting_layout .setting_item {
+  display: grid;
+  grid-template-columns: 1fr max-content;
+  gap: 8px;
+  font-size: 3.2rem;
+  font-weight: 900;
+}
+main#view #setting-area .setting_layout .setting_item .toggle_button {
+  display: inline-block;
+  position: relative;
+  width: 100px;
+  height: 50px;
+  border-radius: 50px;
+  background-color: #b4c0c7;
+  cursor: pointer;
+  transition: background-color 0.4s;
+}
+main#view #setting-area .setting_layout .setting_item .toggle_button:has(:checked) {
+  background-color: #738fe2;
+}
+main#view #setting-area .setting_layout .setting_item .toggle_button::after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  background-color: #fff;
+  content: "";
+  transition: left 0.4s;
+}
+main#view #setting-area .setting_layout .setting_item .toggle_button:has(:checked)::after {
+  left: 50px;
+}
+main#view #setting-area .setting_layout .setting_item .toggle_button input {
+  display: none;
+}
+main#view #setting-area .setting_layout .setting_item input[type=range] {
+  width: 240px;
+}
+main#view #setting-area .setting_layout .setting_item input[type=range]::-webkit-slider-runnable-track {
+  height: 16px;
+}
+main#view #setting-area .setting_layout .setting_item input[type=range]::-moz-range-track {
+  height: 16px;
 }
 main#view #character-area {
   position: relative;

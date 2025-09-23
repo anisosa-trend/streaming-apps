@@ -23,26 +23,51 @@
     <main id="view">
       <div id="container">
         <div id="setting-area">
-          <!-- <h2>設定</h2> -->
-          <!-- カラー設定 -->
+          <!-- プレイヤーボタンの表示・非表示 -->
           <div class="setting_layout">
             <div class="setting_heading">
-              <h3>カラー設定</h3>
-              <p>色を選択すると、自動で全体の色が調整されます。</p>
+              <h2>表示設定</h3>
+              <p>各パーツの表示・非表示を切り替えます。</p>
             </div>
-            <div class="color_setting">
-              <input
-                type="color"
-                id="color-picker"
-                value="#555555"
-                aria-label="カラーピッカー"
-              />
-              <p id="selected-color">#555555</p>
+            
+            <div class="setting_item item_checkbox">
+              <p>プレイヤーボタン</p>
+              <label class="toggle_button">
+                <input type="checkbox" checked/>
+              </label>
+            </div>
+
+            <div class="setting_item item_checkbox">
+              <p>音声バー</p>
+              <label class="toggle_button">
+                <input type="checkbox" checked/>
+              </label>
+            </div>
+
+            <div class="setting_item item_checkbox">
+              <p>オプションボタン</p>
+              <label class="toggle_button">
+                <input type="checkbox" checked/>
+              </label>
             </div>
           </div>
 
-          <!-- プレイヤーボタンの表示・非表示 -->
-          <!-- 音声バー + オプションの表示・非表示 -->
+          <div class="setting_layout">
+            <div class="setting_heading">
+              <h2>透過設定</h3>
+              <p>各パーツの透過度を切り替えます。</p>
+            </div>
+            
+            <div class="setting_item item_slider">
+              <p>フレーム</p>
+              <input type="range" class="input-range" name="foo" min="0" max="10">
+            </div>
+
+            <div class="setting_item item_slider">
+              <p>コントローラー</p>
+              <input type="range" class="input-range" name="foo" min="0" max="10">
+            </div>
+          </div>
         </div>
 
         <div id="character-area">
@@ -270,17 +295,6 @@
               setListArea.style.visibility = "visible";
             }
           });
-
-        /** ====================================================================== */
-        /** 選択した色をLocalStorageに保存する処理 */
-        /** ====================================================================== */
-        const colorPicker = document.getElementById("color-picker");
-        const selectedColorText = document.getElementById("selected-color");
-        colorPicker.addEventListener("input", (event) => {
-          const selectedHexColor = event.target.value;
-          selectedColor.textContent = selectedHexColor;
-          localStorage.setItem("selectedColor", selectedHexColor);
-        });
       });
     </script>
   </body>
