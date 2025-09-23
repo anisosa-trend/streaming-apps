@@ -66,7 +66,7 @@ main#view #setting-area {
   flex-direction: column;
   gap: 40px;
   width: calc(100% - 256px);
-  padding: 24px 32px;
+  padding: 24px 32px 32px;
   background-color: #fff;
   border-radius: 16px;
   box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.3);
@@ -129,13 +129,40 @@ main#view #setting-area .setting_layout .setting_item .toggle_button input {
   display: none;
 }
 main#view #setting-area .setting_layout .setting_item input[type=range] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+       appearance: none;
   width: 240px;
+  background: transparent;
+  cursor: pointer;
 }
 main#view #setting-area .setting_layout .setting_item input[type=range]::-webkit-slider-runnable-track {
+  width: 100%;
   height: 16px;
+  background: var(--progress-bar-color);
+  border-radius: 16px;
+}
+main#view #setting-area .setting_layout .setting_item input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  margin-top: -4px; /* (16px track - 24px thumb) / 2 */
+  width: 24px;
+  height: 24px;
+  background: var(--accent-color);
+  border-radius: 50%;
 }
 main#view #setting-area .setting_layout .setting_item input[type=range]::-moz-range-track {
+  width: 100%;
   height: 16px;
+  background: var(--progress-bar-color);
+  border-radius: 16px;
+}
+main#view #setting-area .setting_layout .setting_item input[type=range]::-moz-range-thumb {
+  width: 24px;
+  height: 24px;
+  background: var(--accent-color);
+  border-radius: 50%;
+  border: none;
 }
 main#view #character-area {
   position: relative;
