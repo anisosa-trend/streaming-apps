@@ -139,7 +139,7 @@
           <!-- コントロールバー -->
           <div id="control-bar">
             <!-- 1曲前に戻る -->
-            <div class="control_button prev">
+            <div id="control-prev-button" class="control_button prev">
               <i class="fa-solid fa-backward"></i>
             </div>
             <!-- 再生・一時停止 -->
@@ -147,7 +147,7 @@
               <i class="fa-solid fa-pause"></i>
             </div>
             <!-- 1曲先に進む -->
-            <div class="control_button next">
+            <div id="control-next-button" class="control_button next">
               <i class="fa-solid fa-forward"></i>
             </div>
           </div>
@@ -235,7 +235,6 @@
                     artist: artist ? artist.replace(/\r$/, "") : "",
                   };
                 });
-                console.log(songs);
 
                 // songsを以下の形式でローカルストレージに保存する。
                 // type Song = {
@@ -254,6 +253,56 @@
                 }));
               };
               reader.readAsText(file, "UTF-8");
+            }
+          });
+
+        /** ====================================================================== */
+        /** 次の曲に進む処理 */
+        /** ====================================================================== */
+        document
+          .querySelector("#control-next-button")
+          .addEventListener("click", function () {
+            const setListData = JSON.parse(localStorage.getItem("setList"));
+            if (setListData && setListData.beforeSinging.length > 0) {
+              // 現在歌っている曲をafterSingingに移動
+              if (setListData.nowSinging.length > 0) {
+                setListData.afterSinging.unshift(setListData.nowSinging[0]);
+                setListData.nowSinging = [];
+              }
+              // beforeSingingから次の曲をnowSingingに移動
+              const nextSong = setListData.beforeSinging.shift();
+              setListData.nowSinging.push(nextSong);
+              // 更新したセットリストを保存
+              localStorage.setItem("setList", JSON.stringify(setListData));
+              // 画面の曲情報を更新
+              document.querySelector(".song_title").textContent = nextSong.title;
+              document.querySelector(".song_artist").textContent = nextSong.artist;
+              checkAndApplyScroll();
+            }
+          });
+
+        /** ====================================================================== */
+        /** 次の曲に進む処理 */
+        /** ====================================================================== */
+        document
+          .querySelector("#control-prev-button")
+          .addEventListener("click", function () {
+            const setListData = JSON.parse(localStorage.getItem("setList"));
+            if (setListData && setListData.afterSinging.length > 0) {
+              // 現在歌っている曲をbeforeSingingに戻す
+              if (setListData.nowSinging.length > 0) {
+                setListData.beforeSinging.unshift(setListData.nowSinging[0]);
+                setListData.nowSinging = [];
+              }
+              // afterSingingから前の曲をnowSingingに移動
+              const prevSong = setListData.afterSinging.shift();
+              setListData.nowSinging.push(prevSong);
+              // 更新したセットリストを保存
+              localStorage.setItem("setList", JSON.stringify(setListData));
+              // 画面の曲情報を更新
+              document.querySelector(".song_title").textContent = prevSong.title;
+              document.querySelector(".song_artist").textContent = prevSong.artist;
+              checkAndApplyScroll();
             }
           });
 
