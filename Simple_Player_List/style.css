@@ -40,6 +40,17 @@ p {
     width: 80%;
   }
 }
+@keyframes anim-radio-1 {
+  0% {
+    box-shadow: 0 0 0 1px transparent;
+  }
+  50% {
+    box-shadow: 0 0 0 10px rgba(232, 247, 255, 0.2);
+  }
+  100% {
+    box-shadow: 0 0 0 10px transparent;
+  }
+}
 :root {
   --main-color: #e8f7ff;
   --accent-color: #738fe2;
@@ -163,6 +174,43 @@ main#view #setting-area .setting_layout .setting_item input[type=range]::-moz-ra
   background: var(--accent-color);
   border-radius: 50%;
   border: none;
+}
+main#view #setting-area .setting_layout .setting_item.item_radio .set_list_position {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding: 0;
+  border: none;
+}
+main#view #setting-area .setting_layout .setting_item.item_radio .set_list_position label {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+main#view #setting-area .setting_layout .setting_item.item_radio .set_list_position label::before,
+main#view #setting-area .setting_layout .setting_item.item_radio .set_list_position label:has(:checked)::after {
+  border-radius: 50%;
+  content: "";
+}
+main#view #setting-area .setting_layout .setting_item.item_radio .set_list_position label::before {
+  width: 32px;
+  height: 32px;
+  background-color: var(--main-color);
+}
+main#view #setting-area .setting_layout .setting_item.item_radio .set_list_position label:has(:checked)::after {
+  position: absolute;
+  top: 50%;
+  left: 16px;
+  transform: translate(-50%, -50%);
+  width: 20px;
+  height: 20px;
+  background-color: var(--accent-color);
+  animation: anim-radio-1 0.3s linear;
+}
+main#view #setting-area .setting_layout .setting_item.item_radio .set_list_position input {
+  display: none;
 }
 main#view #character-area {
   position: relative;
