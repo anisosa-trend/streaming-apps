@@ -414,6 +414,25 @@ main#view {
 }
 
 main#controller {
+  button[data-button="primary"] {
+    display: inline-block;
+    padding: 10px 12px;
+    margin: 0;
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: bold;
+    background-color: var(--accent-color);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    &.text-icon-button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+  }
+
   button[data-button="tertiary"] {
     display: inline-block;
     padding: 0;
@@ -428,7 +447,7 @@ main#controller {
     flex-direction: column;
     gap: 8px;
     width: 100%;
-    max-width: 640px;
+    min-width: 320px;
     padding: 16px;
     background-color: var(--main-color);
     box-sizing: border-box;
@@ -468,6 +487,9 @@ main#controller {
         color: var(--accent-color);
         font-size: 1.2rem;
       }
+      input[type="file"] {
+        display: none;
+      }
     }
   }
 
@@ -504,6 +526,88 @@ main#controller {
       #singing-title-clear-button {
         color: var(--text-color);
         background-color: #fff;
+      }
+    }
+    ol {
+      height: 160px;
+      padding: 0;
+      margin: 0;
+      border-radius: 4px;
+      overflow-y: scroll;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+    li {
+      color: var(--text-color-bold);
+      font-size: 1.4rem;
+      font-weight: bold;
+      line-height: 1.5em;
+      list-style: none;
+    }
+  }
+
+  .management_button_section {
+    position: relative;
+    display: flex;
+    justify-content: end;
+    gap: 8px;
+    i {
+      font-size: 1.6rem;
+    }
+
+    .management_popup {
+      position: absolute;
+      bottom: 48px;
+      width: calc(100vw - 32px);
+      padding: 10px;
+      color: #ffffff;
+      font-size: 1.2rem;
+      font-weight: 700;
+      background-color: var(--accent-color);
+      border-radius: 8px;
+      box-sizing: border-box;
+      opacity: 0;
+      visibility: hidden;
+      transition: 0.3s;
+      z-index: 100;
+      &::after {
+        content: "";
+        position: absolute;
+        top: 100%;
+        right: 15px;
+        width: 10px;
+        height: calc(10px / 2 * tan(60deg));
+        clip-path: polygon(0 0, 100% 0, 50% 100%);
+        background-color: var(--accent-color);
+      }
+      .management_popup_layout {
+        display: grid;
+        grid-template-columns: 1fr 25px 25px;
+        gap: 8px;
+        align-items: center;
+        &:not(:last-child) {
+          margin-bottom: 8px;
+        }
+        button {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 100%;
+          padding: 4px;
+          color: var(--text-color);
+          border: none;
+          border-radius: 4px;
+          cursor: pointer;
+          &#confirm-button {
+            background-color: #e6ffea;
+          }
+          &#cancel-button {
+            background-color: #ffe6e6;
+          }
+        }
       }
     }
   }

@@ -387,6 +387,24 @@ main#view #option-layout .plus_button input[type=file] {
   display: none;
 }
 
+main#controller button[data-button=primary] {
+  display: inline-block;
+  padding: 10px 12px;
+  margin: 0;
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: bold;
+  background-color: var(--accent-color);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+main#controller button[data-button=primary].text-icon-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
 main#controller button[data-button=tertiary] {
   display: inline-block;
   padding: 0;
@@ -400,7 +418,7 @@ main#controller #container {
   flex-direction: column;
   gap: 8px;
   width: 100%;
-  max-width: 640px;
+  min-width: 320px;
   padding: 16px;
   background-color: var(--main-color);
   box-sizing: border-box;
@@ -444,6 +462,9 @@ main#controller .input_setlist_section #add-button i {
   color: var(--accent-color);
   font-size: 1.2rem;
 }
+main#controller .input_setlist_section #add-button input[type=file] {
+  display: none;
+}
 main#controller .management_setlist_section {
   display: flex;
   flex-direction: column;
@@ -479,4 +500,84 @@ main#controller .management_setlist_section .setlist_now_playing #playing-title 
 main#controller .management_setlist_section .setlist_now_playing #singing-title-clear-button {
   color: var(--text-color);
   background-color: #fff;
+}
+main#controller .management_setlist_section ol {
+  height: 160px;
+  padding: 0;
+  margin: 0;
+  border-radius: 4px;
+  overflow-y: scroll;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+main#controller .management_setlist_section ol::-webkit-scrollbar {
+  display: none;
+}
+main#controller .management_setlist_section li {
+  color: var(--text-color-bold);
+  font-size: 1.4rem;
+  font-weight: bold;
+  line-height: 1.5em;
+  list-style: none;
+}
+main#controller .management_button_section {
+  position: relative;
+  display: flex;
+  justify-content: end;
+  gap: 8px;
+}
+main#controller .management_button_section i {
+  font-size: 1.6rem;
+}
+main#controller .management_button_section .management_popup {
+  position: absolute;
+  bottom: 48px;
+  width: calc(100vw - 32px);
+  padding: 10px;
+  color: #ffffff;
+  font-size: 1.2rem;
+  font-weight: 700;
+  background-color: var(--accent-color);
+  border-radius: 8px;
+  box-sizing: border-box;
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.3s;
+  z-index: 100;
+}
+main#controller .management_button_section .management_popup::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  right: 15px;
+  width: 10px;
+  height: 8.6602540378px;
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+  background-color: var(--accent-color);
+}
+main#controller .management_button_section .management_popup .management_popup_layout {
+  display: grid;
+  grid-template-columns: 1fr 25px 25px;
+  gap: 8px;
+  align-items: center;
+}
+main#controller .management_button_section .management_popup .management_popup_layout:not(:last-child) {
+  margin-bottom: 8px;
+}
+main#controller .management_button_section .management_popup .management_popup_layout button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 4px;
+  color: var(--text-color);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+main#controller .management_button_section .management_popup .management_popup_layout button#confirm-button {
+  background-color: #e6ffea;
+}
+main#controller .management_button_section .management_popup .management_popup_layout button#cancel-button {
+  background-color: #ffe6e6;
 }/*# sourceMappingURL=style.css.map */

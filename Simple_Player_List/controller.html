@@ -28,11 +28,12 @@
           <input
             type="text"
             id="song-title-input"
-            placeholder="曲名を入力"
+            placeholder="楽曲を登録する (曲名@@アーティスト名)"
             aria-label="曲名を入力"
           />
           <button id="add-button" aria-label="曲を追加">
             <i class="fa-solid fa-plus"></i>
+            <input type="file" id="fileInput" accept=".txt" />
           </button>
         </div>
 
@@ -56,12 +57,208 @@
 
           <div class="setlist_layout">
             <h2>セットリスト</h2>
-            <ol id="song-title-list"></ol>
+            <ol id="setlist-title-list">
+              <li>あああああ</li>
+              <li>いいいいいい</li>
+              <li>ううううう</li>
+            </ol>
+          </div>
+
+          <div class="setlist_layout">
+            <h2>歌唱済み</h2>
+            <ol id="already-sung-title-list">
+              <li>あああああ</li>
+              <li>いいいいいい</li>
+              <li>ううううう</li>
+            </ol>
           </div>
         </section>
 
-        <!--  -->
+        <!-- オプションボタンを表示する -->
+        <div class="management_button_section">
+          <!-- セットリストをクリアする -->
+          <button
+            id="list-clear-button"
+            aria-label="セットリストをクリア"
+            data-button="primary"
+          >
+            <i class="fa-regular fa-trash-can"></i>
+          </button>
+
+          <!-- 削除確認ポップアップ -->
+          <div class="management_popup" id="delete-confirm-popup">
+            <div class="management_popup_layout">
+              <p>セットリストを削除しますか？</p>
+              <button
+                id="confirm-button"
+                aria-label="削除を確定"
+                data-button="secondary"
+              >
+                <i class="fa-solid fa-check"></i>
+              </button>
+              <button
+                id="cancel-button"
+                aria-label="削除をキャンセル"
+                data-button="secondary"
+              >
+                <i class="fa-solid fa-xmark"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- <div class="controller-button-group">
+            <button
+              id="copy-button"
+              class="controller-button"
+              aria-label="セットリストをコピー"
+              data-button="primary"
+            >
+              <i class="fa-solid fa-copy"></i>
+            </button>
+
+            <div id="copy-popup" class="controller-popup">
+              <div class="popup-content">
+                <p>セットリストをコピーしました</p>
+              </div>
+            </div>
+
+            <button
+              id="list-clear-button"
+              class="controller-button"
+              aria-label="セットリストをクリア"
+              data-button="primary"
+            >
+              <i class="fa-regular fa-trash-can"></i>
+            </button>
+
+            <div id="confirm-popup" class="controller-popup">
+              <div class="popup-content">
+                <p>本当にセットリストを削除しますか？</p>
+                <button
+                  id="confirm-button"
+                  aria-label="削除を確定"
+                  data-button="secondary"
+                >
+                  <i class="fa-solid fa-check"></i>
+                </button>
+                <button
+                  id="cancel-button"
+                  aria-label="削除をキャンセル"
+                  data-button="secondary"
+                >
+                  <i class="fa-solid fa-xmark"></i>
+                </button>
+              </div>
+            </div>
+
+            <button
+              id="setting-button"
+              class="controller-button"
+              aria-label="設定"
+              data-button="primary"
+            >
+              <i class="fa-solid fa-gear"></i>
+            </button>
+
+            <div id="setting-popup" class="controller-popup">
+              <div class="popup-content">
+                <p>カラー設定</p>
+                <div class="color-setting">
+                  <p id="selected-color">#555555</p>
+                  <input
+                    type="color"
+                    id="color-picker"
+                    value="#555555"
+                    aria-label="カラーピッカー"
+                  />
+                </div>
+              </div>
+
+              <div class="popup-content">
+                <p>背景設定</p>
+                <div class="background-setting">
+                  <select id="bg-color-select" aria-label="背景色選択">
+                    <option value="rgba(255, 255, 255, 0.5)" selected>
+                      白
+                    </option>
+                    <option value="rgba(0, 0, 0, 0.5)">黒</option>
+                    <option value="rgba(0, 0, 0, 0)">なし</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div> -->
+        </div>
       </div>
     </main>
+
+    <script>
+      /** ====================================================================== */
+      /** ローカルにあるセットリスト.txtを読み込みLocalStorageに保存する処理 */
+      /** ====================================================================== */
+      // .plus_buttonクリックでファイル選択
+      document
+        .querySelector("#add-button")
+        .addEventListener("click", function () {
+          document.getElementById("fileInput").click();
+        });
+
+      // ファイル選択後、内容を読み込む
+      document
+        .getElementById("fileInput")
+        .addEventListener("change", function (event) {
+          const file = event.target.files[0];
+          if (file) {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+              const text = e.target.result;
+              // ここでtextの内容を[{title: string, artist: string},...}]の形式に変換する。
+              const songs = text.split("\n").map((line) => {
+                const [title, artist] = line.split("@@");
+                return {
+                  title: title.replace(/\r$/, ""),
+                  artist: artist ? artist.replace(/\r$/, "") : "",
+                };
+              });
+
+              // songsを以下の形式でローカルストレージに保存する。
+              // type Song = {
+              //   title: string;
+              //   artist: string;
+              // }
+              // type SetList = {
+              //   beforeSinging: Song[];
+              //   nowSinging: Song[];
+              //   afterSinging: Song[];
+              // }
+              localStorage.setItem(
+                "setList",
+                JSON.stringify({
+                  beforeSinging: songs,
+                  nowSinging: [],
+                  afterSinging: [],
+                })
+              );
+            };
+            reader.readAsText(file, "UTF-8");
+          }
+        });
+
+      /** ====================================================================== */
+      /** 削除ポップアップを表示する処理 */
+      /** ====================================================================== */
+      document
+        .querySelector("#list-clear-button")
+        .addEventListener("click", function () {
+          const setListArea = document.querySelector("#delete-confirm-popup");
+          if (setListArea.style.opacity === "1") {
+            setListArea.style.opacity = "0";
+            setListArea.style.visibility = "hidden";
+          } else {
+            setListArea.style.opacity = "1";
+            setListArea.style.visibility = "visible";
+          }
+        });
+    </script>
   </body>
 </html>
