@@ -437,6 +437,50 @@
         setupVisibilityToggle('is-display-option', '#option-layout', 'isDisplayOption');
 
         /** ====================================================================== */
+        /** セットリストの位置設定 */
+        /** ====================================================================== */
+        function setupSetlistPosition() {
+          const radios = document.querySelectorAll('input[name="setlist-position"]');
+          const setListArea = document.querySelector('.set_list_area');
+          const storageKey = 'setlistPosition';
+
+          function updatePosition(value) {
+            if (value === 'フレームあり') {
+              setListArea.style.top = '20px';
+              setListArea.style.left = '32px';
+            } else {
+              setListArea.style.top = '-20px';
+              setListArea.style.left = '-20px';
+            }
+          }
+
+          // 1. ページ読み込み時にlocalStorageから設定を復元
+          const savedValue = localStorage.getItem(storageKey);
+          if (savedValue) {
+            radios.forEach(radio => {
+              // ラジオボタンのラベルテキストを取得して比較
+              if (radio.parentElement.textContent.trim() === savedValue) {
+                radio.checked = true;
+              }
+            });
+            updatePosition(savedValue);
+          } else {
+            // デフォルト値（"フレームあり"）を適用
+            updatePosition('フレームあり');
+          }
+
+          // 2. ラジオボタンの変更を監視
+          radios.forEach(radio => {
+            radio.addEventListener('change', function() {
+              const selectedLabel = this.parentElement.textContent.trim();
+              localStorage.setItem(storageKey, selectedLabel);
+              updatePosition(selectedLabel);
+            });
+          });
+        }
+        setupSetlistPosition();
+
+        /** ====================================================================== */
         /** 透過設定の保存・読み込みと反映 */
         /** ====================================================================== */
         function setupOpacitySlider(sliderId, elementSelector, storageKey, baseColorRgb, targetProperty) {
