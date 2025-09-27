@@ -73,34 +73,7 @@
         <div id="character-area">
           <!-- セットリスト表示エリア -->
           <div class="set_list_area">
-            <div id="set-list" class="set_list">
-              <ol>
-                <li>Fighting My Way</li>
-                <li>Luna say maybe</li>
-                <li>世界一可愛い私</li>
-                <li>Fluorite</li>
-                <li>白線</li>
-                <li>Wonder Scale</li>
-                <li>Fighting My Way</li>
-                <li>Luna say maybe</li>
-                <li>世界一可愛い私</li>
-                <li>Fluorite</li>
-                <li>白線</li>
-                <li>Wonder Scale</li>
-                <li>Fighting My Way</li>
-                <li>Luna say maybe</li>
-                <li>世界一可愛い私</li>
-                <li>Fluorite</li>
-                <li>白線</li>
-                <li>Wonder Scale</li>
-                <li>Fighting My Way</li>
-                <li>Luna say maybe</li>
-                <li>世界一可愛い私</li>
-                <li>Fluorite</li>
-                <li>白線</li>
-                <li>Wonder Scale</li>
-              </ol>
-            </div>
+            <div id="set-list" class="set_list"></div>
           </div>
         </div>
 
@@ -274,6 +247,7 @@
               setListData.nowSinging.push(nextSong);
               // 更新したセットリストを保存
               localStorage.setItem("setList", JSON.stringify(setListData));
+              updateAfterSingingList();
               // 画面の曲情報を更新
               document.querySelector(".song_title").textContent = nextSong.title;
               document.querySelector(".song_artist").textContent = nextSong.artist;
@@ -299,6 +273,7 @@
               setListData.nowSinging.push(prevSong);
               // 更新したセットリストを保存
               localStorage.setItem("setList", JSON.stringify(setListData));
+              updateAfterSingingList();
               // 画面の曲情報を更新
               document.querySelector(".song_title").textContent = prevSong.title;
               document.querySelector(".song_artist").textContent = prevSong.artist;
@@ -325,23 +300,27 @@
         /** ====================================================================== */
         /** ローカルストレージにある歌唱済み曲のセットリストを表示する処理 */
         /** ====================================================================== */
-        // const songs = JSON.parse(localStorage.getItem("songs"));
-        // if (songs) {
-        //   // 初期化
-        //   const setList = document.getElementById("set-list");
-        //   setList.innerHTML = ""; // 既存のリストをクリア
+        function updateAfterSingingList() {
+          const setListData = JSON.parse(localStorage.getItem("setList"));
+          const setListElement = document.getElementById("set-list");
+          
+          if (setListElement && setListData && setListData.afterSinging) {
+            // 初期化
+            setListElement.innerHTML = ""; // 既存のリストをクリア
 
-        //   // リストを作成する
-        //   const ol = document.createElement("ol");
-        //   songs.forEach((song) => {
-        //     const li = document.createElement("li");
-        //     li.textContent = song.title;
-        //     ol.appendChild(li);
-        //   });
+            // リストを作成する
+            const ol = document.createElement("ol");
+            setListData.afterSinging.forEach((song) => {
+              const li = document.createElement("li");
+              li.textContent = song.title;
+              ol.appendChild(li);
+            });
 
-        //   // リストをセットリストに追加
-        //   setList.appendChild(ol);
-        // }
+            // リストをセットリストに追加
+            setListElement.appendChild(ol);
+          }
+        }
+        updateAfterSingingList(); // 初期表示
 
         /** ====================================================================== */
         /** お気に入りボタンの切り替え処理 */
