@@ -137,7 +137,7 @@
               <i class="fa-solid fa-backward"></i>
             </div>
             <!-- 再生・一時停止 -->
-            <div class="control_button play">
+            <div id="control-play-button" class="control_button play">
               <i class="fa-solid fa-pause"></i>
             </div>
             <!-- 1曲先に進む -->
@@ -183,6 +183,7 @@
       </div>
     </main>
 
+    <script src="config.js"></script>
     <script>
       document.addEventListener("DOMContentLoaded", function () {
         /** ====================================================================== */
@@ -353,6 +354,44 @@
             icon.classList.toggle("fa-regular");
             icon.classList.toggle("fa-solid");
           });
+
+        /** ====================================================================== */
+        /** 再生・一時停止ボタンの切り替え処理 */
+        /** ====================================================================== */
+        let isPlaying = true; // true: 再生中 (一時停止アイコン), false: 一時停止中 (再生アイコン)
+        const playButton = document.getElementById("control-play-button");
+        const playIcon = playButton.querySelector("i");
+        const songTitleElement = document.querySelector(".song_title");
+        const songArtistElement = document.querySelector(".song_artist");
+
+        playButton.addEventListener("click", function () {
+          isPlaying = !isPlaying;
+
+          if (!isPlaying) {
+            // 一時停止状態（トーク中）にする
+            playIcon.classList.remove("fa-pause");
+            playIcon.classList.add("fa-play");
+            songTitleElement.textContent = config.pauseText;
+            songArtistElement.textContent = config.userName;
+          } else {
+            // 再生状態に戻す
+            playIcon.classList.remove("fa-play");
+            playIcon.classList.add("fa-pause");
+
+            const setListData = JSON.parse(localStorage.getItem("setList"));
+            if (setListData && setListData.nowSinging.length > 0) {
+              const nowSingingSong = setListData.nowSinging[0];
+              songTitleElement.textContent = nowSingingSong.title;
+              songArtistElement.textContent = nowSingingSong.artist;
+            } else {
+              // nowSingingが空の場合のデフォルト表示
+              songTitleElement.textContent = "----";
+              songArtistElement.textContent = "------";
+            }
+          }
+          // テキストが変更された可能性があるので、スクロールチェックを再実行
+          checkAndApplyScroll();
+        });
 
         /** ====================================================================== */
         /** セッティングを表示する処理 */
