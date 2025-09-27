@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <title>Simple Setlist Management Tool - Controller</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@300;400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <main id="controller">
+      <div id="container">
+        <!-- 楽曲を登録する -->
+        <!-- 曲名@@アーティスト名で入力出来るようにする -->
+        <div class="input_setlist_section">
+          <input
+            type="text"
+            id="song-title-input"
+            placeholder="曲名を入力"
+            aria-label="曲名を入力"
+          />
+          <button id="add-button" aria-label="曲を追加">
+            <i class="fa-solid fa-plus"></i>
+          </button>
+        </div>
+
+        <!-- セットリストを表示する -->
+        <section class="management_setlist_section">
+          <div class="setlist_layout">
+            <h2>歌唱中の楽曲</h2>
+
+            <div class="setlist_now_playing">
+              <p id="playing-title">---</p>
+
+              <button
+                id="singing-title-clear-button"
+                aria-label="歌唱中の曲をクリア"
+                data-button="tertiary"
+              >
+                <i class="fa-solid fa-xmark"></i>
+              </button>
+            </div>
+          </div>
+
+          <div class="setlist_layout">
+            <h2>セットリスト</h2>
+            <ol id="song-title-list"></ol>
+          </div>
+        </section>
+
+        <!--  -->
+      </div>
+    </main>
+  </body>
+</html>

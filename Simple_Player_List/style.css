@@ -385,4 +385,98 @@ main#view #option-layout .option_button i {
 }
 main#view #option-layout .plus_button input[type=file] {
   display: none;
+}
+
+main#controller button[data-button=tertiary] {
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+  border: none;
+  cursor: pointer;
+}
+main#controller #container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+  max-width: 640px;
+  padding: 16px;
+  background-color: var(--main-color);
+  box-sizing: border-box;
+}
+main#controller .input_setlist_section {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+main#controller .input_setlist_section input[type=text] {
+  width: calc(100% - 20px);
+  padding: 12px;
+  color: var(--accent-color);
+  font-size: 1.4rem;
+  font-weight: bold;
+  border: 2px solid var(--accent-color);
+  border-radius: 8px;
+}
+main#controller .input_setlist_section input[type=text]:focus {
+  outline: none;
+}
+main#controller .input_setlist_section input[type=text]::-moz-placeholder {
+  color: var(--text-color);
+}
+main#controller .input_setlist_section input[type=text]::placeholder {
+  color: var(--text-color);
+}
+main#controller .input_setlist_section #add-button {
+  position: absolute;
+  top: 50%;
+  right: 4px;
+  padding: 8px 10px;
+  transform: translateY(-50%);
+  border: none;
+  border-left: 2px solid var(--accent-color);
+  background-color: #fff;
+  cursor: pointer;
+}
+main#controller .input_setlist_section #add-button i {
+  color: var(--accent-color);
+  font-size: 1.2rem;
+}
+main#controller .management_setlist_section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px;
+  background-color: #fff;
+  border: 2px solid var(--accent-color);
+  border-radius: 8px;
+}
+main#controller .management_setlist_section h2 {
+  padding-bottom: 4px;
+  color: var(--text-color-bold);
+  font-size: 1.4rem;
+  font-weight: bold;
+  border-bottom: 2px solid var(--text-color-bold);
+}
+main#controller .management_setlist_section .setlist_layout {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+main#controller .management_setlist_section .setlist_now_playing {
+  display: grid;
+  grid-template-columns: 1fr max-content;
+  gap: 8px;
+  align-items: center;
+}
+main#controller .management_setlist_section .setlist_now_playing #playing-title {
+  color: var(--accent-color);
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+main#controller .management_setlist_section .setlist_now_playing #singing-title-clear-button {
+  color: var(--text-color);
+  background-color: #fff;
 }/*# sourceMappingURL=style.css.map */
